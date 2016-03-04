@@ -24,7 +24,7 @@ Modify env.sh for environment variable.
 
 ## Run
 
-- To run MixApp:
+To run MixApp:
 ```
 docker-compose up -d
 ```
