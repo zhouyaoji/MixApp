@@ -9,7 +9,7 @@ ACCOUNT_NAME=customer1
 ACCESS_KEY=
 
 # Set app variables
-APP_NAME=MixApp_Jenni
+APP_NAME=MixApp
 NODE_NAME=Python-Node
 TIER_NAME=Python-Tier
 PHP_NODE_NAME=PHP-Node
