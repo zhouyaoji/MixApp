@@ -42,3 +42,6 @@ echo; echo "Building Node App..."
 
 echo; echo "Building the Java App..."
 (cd Java-App && docker build -t appdynamics/java-app .)
+
+echo "Building the Load Gen Container..."
+(cd Load-Gen && docker build -t appdynamics/mixapp-load .)

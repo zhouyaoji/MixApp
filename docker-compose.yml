@@ -34,9 +34,17 @@ services:
     env_file: 
       - ./env.sh
     image: appdynamics/java-app
+    ports:
+      - "8080:8080"
+
+  mixapp_load:
+    container_name: mixapp_load
+    hostname: mixapp_load
+    env_file: 
+      - ./env.sh
+    image: appdynamics/mixapp-load
     external_links:
+      - java-app
       - nodejs_app
       - python_app
       - php_app
-    ports:
-      - "8080:8080"

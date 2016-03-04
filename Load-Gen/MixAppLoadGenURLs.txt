@@ -1,0 +1,12 @@
+http://java_app:8080/TechStack/php.httpbackendservlet?address=http://php_app/info.php
+http://java_app:8080/TechStack/python.httpbackendservlet?address=http://python_app:9000/wave/abc
+http://java_app:8080/TechStack/nodejs.httpbackendservlet?address=http://nodejs_app:3000
+http://php_app/callPythonApp.php
+http://php_app/callNodejsApp.php
+http://php_app/callJavaApp.php
+http://python_app:9000/http?url=http://java_app:8080/TechStack/i.pojoservlet
+http://python_app:9000/http?url=http://php_app/info.php
+http://python_app:9000/http?url=http://nodejs_app:3000
+http://nodejs_app:3000/crosspython
+http://nodejs_app:3000/crossjava
+http://nodejs_app:3000/crossphp
