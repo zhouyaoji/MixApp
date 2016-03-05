@@ -13,9 +13,10 @@ This project is composed by 5 containers.
 ## Build
 
 Download 3 agents and name them as below, put them in home folder.
-- appdynamics-php-agent-x64-linux-tar-self-service.zip -> PHPAgent.zip
-- AppServerAgent.zip -> JavaAgent.zip
-- MachineAgent.zip -> MachineAgent.zip
+- PHP Agent -> PHPAgent.zip
+- Java (AppServer) Agent -> JavaAgent.zip
+- Machine Agent -> MachineAgent.zip
+
 Modify env.sh for environment variable.
 
 ```
