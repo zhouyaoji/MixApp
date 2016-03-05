@@ -16,12 +16,10 @@ trap cleanUp EXIT
 cp runMachineAgent.sh Java-App/
 cp runMachineAgent.sh PHP-App/
 cp runMachineAgent.sh Node-App/
-cp runMachineAgent.sh python-siege/
 
 cp MachineAgent.zip Java-App/
 cp MachineAgent.zip PHP-App/
 cp MachineAgent.zip Node-App/
-cp MachineAgent.zip python-siege/
 
 cp JavaAgent.zip Java-App/
 cp PHPAgent.zip PHP-App/

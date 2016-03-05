@@ -1,5 +1,5 @@
 #MixApp
-==================
+
 Mixed language applications packaged in Docker containers.
 
 ## Project Structure
