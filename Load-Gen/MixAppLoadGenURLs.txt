@@ -1,4 +1,4 @@
-http://java_app:8080/TechStack/php.httpbackendservlet?address=http://php_app/info.php
+http://java_app:8080/TechStack/php.httpbackendservlet?address=http://php_app:80
 http://java_app:8080/TechStack/python.httpbackendservlet?address=http://python_app:9000/wave/abc
 http://java_app:8080/TechStack/nodejs.httpbackendservlet?address=http://nodejs_app:3000
 http://php_app/callPythonApp.php
