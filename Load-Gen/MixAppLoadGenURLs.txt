@@ -4,9 +4,9 @@ http://java_app:8080/TechStack/nodejs.httpbackendservlet?address=http://nodejs_a
 http://php_app/callPythonApp.php
 http://php_app/callNodejsApp.php
 http://php_app/callJavaApp.php
-http://python_app:9000/http?url=http://java_app:8080/TechStack/i.pojoservlet
-http://python_app:9000/http?url=http://php_app/info.php
-http://python_app:9000/http?url=http://nodejs_app:3000
+http://python_app:9000/crossjava
+http://python_app:9000/crossphp
+http://python_app:9000/crossnodejs
 http://nodejs_app:3000/crosspython
 http://nodejs_app:3000/crossjava
 http://nodejs_app:3000/crossphp
