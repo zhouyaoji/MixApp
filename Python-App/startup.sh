@@ -10,7 +10,7 @@ source /appd/env.sh && sed -i "/^account/c\account = ${ACCOUNT_NAME}" /appd/Pyth
 source /appd/env.sh && sed -i "/^accesskey/c\accesskey = ${ACCESS_KEY}" /appd/Python-App/appdynamics.cfg
 source /appd/env.sh && sed -i "/^app/c\app = ${APP_NAME}" /appd/Python-App/appdynamics.cfg
 source /appd/env.sh && sed -i "/^tier/c\tier = ${TIER_NAME}" /appd/Python-App/appdynamics.cfg
-source /appd/env.sh && sed -i "/^node/c\node = ${NODE_NAME}" /appd/Python-App/appdynamics.cfg
+source /appd/env.sh && sed -i "/^node/c\node = ${APP_NAME}-${NODE_NAME}" /appd/Python-App/appdynamics.cfg
 sed -i 's/localhost/python_mysql/g' /appd/Python-App/demo/config.py
 sed -i 's/127.0.0.1/python_postgres/g' /appd/Python-App/demo/config.py
 

@@ -3,7 +3,7 @@ version: '2'
 services:
   nodejs_app:
     container_name: nodejs_app
-    hostname: nodejs_app
+    hostname: HOST_NAME-nodejs_app
     image: appdynamics/nodejs-app
     env_file: 
       - ./env.sh
@@ -12,7 +12,7 @@ services:
 
   python_app:
     container_name: python_app
-    hostname: python_app
+    hostname: HOST_NAME-python_app
     image: appdynamics/python-app
     env_file: 
       - ./env.sh
@@ -21,7 +21,7 @@ services:
 
   php_app:
     container_name: php_app
-    hostname: php_app
+    hostname: HOST_NAME-php_app
     image: appdynamics/php-app
     env_file: 
       - ./env.sh
@@ -30,7 +30,7 @@ services:
 
   java_app:
     container_name: java_app
-    hostname: java_app
+    hostname: HOST_NAME-java_app
     env_file: 
       - ./env.sh
     image: appdynamics/java-app
@@ -39,7 +39,7 @@ services:
 
   mixapp_load:
     container_name: mixapp_load
-    hostname: mixapp_load
+    hostname: HOST_NAME-mixapp_load
     env_file: 
       - ./env.sh
     image: appdynamics/mixapp-load
