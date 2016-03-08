@@ -4,7 +4,7 @@
 source /appdynamics/env.sh
 
 # Complete App Agent config
-./var/www/appdynamics-php-agent/install.sh -a=${ACCOUNT_NAME}@${ACCESS_KEY} ${CONTROLLER} ${APPD_PORT} ${APP_NAME} ${PHP_TIER_NAME} ${PHP_NODE_NAME}
+./var/www/appdynamics-php-agent/install.sh -a=${ACCOUNT_NAME}@${ACCESS_KEY} ${CONTROLLER} ${APPD_PORT} ${APP_NAME} ${PHP_TIER_NAME} ${APP_NAME}-${PHP_NODE_NAME}
 
 # Retart Apache Server
 apachectl restart

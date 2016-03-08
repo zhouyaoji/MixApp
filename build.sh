@@ -35,3 +35,9 @@ echo; echo "Building the Java App..."
 
 echo "Building the Load Gen Container..."
 (cd Load-Gen && docker build -t appdynamics/mixapp-load .)
+
+HOSTNAME=`hostname`
+
+sed -i.bk "s/ HOST_NAME/ ${HOSTNAME}/" docker-compose.yml
+
+rm -f docker-compose.yml.bk

@@ -10,7 +10,7 @@ source env.sh && sed -i "s/ACCOUNT_NAME/${ACCOUNT_NAME}/g" /node-todo/server.js
 source env.sh && sed -i "s/ACCESS_KEY/${ACCESS_KEY}/g" /node-todo/server.js
 source env.sh && sed -i "s/APP_NAME/${APP_NAME}/g" /node-todo/server.js
 source env.sh && sed -i "s/NODE_TIER_NAME/${NODE_TIER_NAME}/g" /node-todo/server.js
-source env.sh && sed -i "s/NODE_NODE_NAME/${NODE_NODE_NAME}/g" /node-todo/server.js
+source env.sh && sed -i "s/NODE_NODE_NAME/${APP_NAME}-${NODE_NODE_NAME}/g" /node-todo/server.js
 
 # Start MongoDB
 service mongod start
