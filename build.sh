@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Version-independent agent names used by Dockerfiles 
-MACHINE_AGENT=MachineAgent.zip
-APP_SERVER_AGENT=JavaAgent.zip
-PHP_AGENT=PHPAgent.zip
-WEBSERVER_AGENT=webserver_agent.tar.gz
-
 cleanUp() {
 if [ -z ${PREPARE_ONLY} ]; then
  echo "Deleting Older Agents"
@@ -33,6 +27,8 @@ promptForAgents(){
   read -e -p "Enter path to WebServer Agent: " WEBSERVER_AGENT
   read -e -p "Enter path of tomcat Jar: " TOMCAT
 
+cp JavaAgent.zip Java-App/
+cp PHPAgent.zip PHP-App/
 
   echo "Adding AppDynamics Agents: 
     ${APP_SERVER_AGENT} 
