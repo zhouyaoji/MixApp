@@ -17,7 +17,7 @@ services:
     env_file: 
       - ./env.sh
     ports: 
-      - "9000:9000"
+      - "3001:9000"
 
   php_app:
     container_name: php_app
@@ -26,7 +26,7 @@ services:
     env_file: 
       - ./env.sh
     ports: 
-      - "80:80"
+      - "3002:80"
 
   java_app:
     container_name: java_app
@@ -35,7 +35,7 @@ services:
       - ./env.sh
     image: appdynamics/java-app
     ports:
-      - "8080:8080"
+      - "3003:8080"
 
   mixapp_load:
     container_name: mixapp_load

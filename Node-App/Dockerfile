@@ -33,6 +33,10 @@ RUN unzip -q /MachineAgent.zip -d /machine-agent;rm MachineAgent.zip
 ADD runMachineAgent.sh /
 RUN chmod +x /runMachineAgent.sh
 
+# Analytics within Machine Agent
+ADD configAnalytics.sh /
+RUN chmod +x /configAnalytics.sh
+
 # Install and start mongo
 ADD /mongodb-org-3.0.repo /etc/yum.repos.d/
 RUN yum install -y mongodb-org

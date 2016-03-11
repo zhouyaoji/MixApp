@@ -8,12 +8,20 @@ if [ -z "${CONTROLLER}" ]; then
         export CONTROLLER="controller";
 fi
 
+if [ -z "${EVENT_ENDPOINT}" ]; then
+	export EVENT_ENDPOINT="localhost";
+fi
+
 if [ -z "${APPD_PORT}" ]; then
         export APPD_PORT=8090;
 fi
 
 if [ -z "${ACCOUNT_NAME}" ]; then
         export ACCOUNT_NAME="customer1";
+fi
+
+if [ -z "${GLOBAL_ACCOUNT_NAME}" ]; then
+        export GLOBAL_ACCOUNT_NAME="customer1";
 fi
 
 if [ -z "${ACCESS_KEY}" ]; then
@@ -30,7 +38,7 @@ fi
 
 # Set in Dockerfile based on installed App Server Agent version: _VERSION_STRING will be replaced during build
 export VERSION_STRING="_VERSION_STRING"
-
+export MACHINE_AGENT_HOME=/machine-agent
 export JAVA_OPTS="-Xmx512m -XX:MaxPermSize=256m"
 export APPD_JAVA_OPTS="-Dappdynamics.controller.hostName=${CONTROLLER} -Dappdynamics.controller.port=${APPD_PORT} -Dappdynamics.agent.applicationName=${APP_NAME} -Dappdynamics.agent.tierName=${JAVA_TIER_NAME} -Dappdynamics.agent.nodeName=${APP_NAME}-${JAVA_NODE_NAME} -Dappdynamics.agent.accountName=${ACCOUNT_NAME} -Dappdynamics.agent.accountAccessKey=${ACCESS_KEY}";
 export APP_AGENT_JAVA_OPTS="${JAVA_OPTS} ${APPD_JAVA_OPTS} -DjvmRoute=${JVM_ROUTE} -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager";

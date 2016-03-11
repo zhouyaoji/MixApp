@@ -44,6 +44,10 @@ RUN unzip -q /MachineAgent.zip -d /machine-agent;rm MachineAgent.zip
 ADD runMachineAgent.sh /
 RUN chmod +x /runMachineAgent.sh
 
+# Analytics within Machine Agent
+ADD configAnalytics.sh /
+RUN chmod +x /configAnalytics.sh
+
 # Add Env script
 ADD /env.sh /appdynamics/
 RUN chmod 777 /appdynamics/env.sh
