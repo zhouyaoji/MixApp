@@ -27,6 +27,10 @@ RUN unzip -q /MachineAgent.zip -d /machine-agent;rm MachineAgent.zip
 ADD runMachineAgent.sh /
 RUN chmod +x /runMachineAgent.sh
 
+# Analytics within Machine Agent
+ADD configAnalytics.sh /
+RUN chmod +x /configAnalytics.sh
+
 ##################### INSTALLATION END #####################
 
 # Expose Ports
