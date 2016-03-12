@@ -37,6 +37,15 @@ services:
     ports:
       - "3003:8080"
 
+  webserver:
+    container_name: webserver
+    hostname: HOST_NAME-webserver
+    env_file: 
+      - ./env.sh
+    image: appdynamics/webserver
+    ports:
+      - "3004:80"
+
   mixapp_load:
     container_name: mixapp_load
     hostname: HOST_NAME-mixapp_load
@@ -44,7 +53,9 @@ services:
       - ./env.sh
     image: appdynamics/mixapp-load
     external_links:
+      - webserver
       - java-app
       - nodejs_app
       - python_app
       - php_app
+      

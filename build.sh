@@ -18,6 +18,7 @@ cp MachineAgent.zip Python-App/
 
 cp JavaAgent.zip Java-App/
 cp PHPAgent.zip PHP-App/
+cp webserver_agent.tar.gz WebServer/
 
 echo; echo "Building MixApp containers"
 
@@ -33,7 +34,10 @@ echo; echo "Building Node App..."
 echo; echo "Building the Java App..."
 (cd Java-App && docker build -t appdynamics/java-app .)
 
-echo "Building the Load Gen Container..."
+echo; echo "Building the WebServer..."
+(cd WebServer && docker build -t appdynamics/webserver .)
+
+echo; echo "Building the Load Gen Container..."
 (cd Load-Gen && docker build -t appdynamics/mixapp-load .)
 
 HOSTNAME=`hostname`
