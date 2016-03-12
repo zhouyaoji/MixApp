@@ -47,12 +47,16 @@ RUN ln -s ${NATIVE_HOME}/WebServerAgent/Apache/libmod_appdynamics.so $HTTPD_24/m
 # ECommerce reverse proxy configuration
 ADD http_proxy.conf ${HTTPD_24}/conf.d/
 
-# (Placeholder - build script will update with zip/rpm directives)
-# Machine Agent Install
+# Machine Agent
+ADD MachineAgent.zip /
+RUN unzip -q /MachineAgent.zip -d /machine-agent;rm MachineAgent.zip
 
-# Start the Machine Agent
-# ADD start-machine-agent.sh /
-# RUN chmod 744 /start-machine-agent.sh
+ADD runMachineAgent.sh /
+RUN chmod +x /runMachineAgent.sh
+
+# Analytics within Machine Agent
+ADD configAnalytics.sh /
+RUN chmod +x /configAnalytics.sh
 
 # Add utility scripts to /usr/local/bin
 ADD tail-proxy-log /usr/local/bin/

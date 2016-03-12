@@ -15,6 +15,7 @@ cp MachineAgent.zip Java-App/
 cp MachineAgent.zip PHP-App/
 cp MachineAgent.zip Node-App/
 cp MachineAgent.zip Python-App/
+cp MachineAgent.zip WebServer/
 
 cp JavaAgent.zip Java-App/
 cp PHPAgent.zip PHP-App/
