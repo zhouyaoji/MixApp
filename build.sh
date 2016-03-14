@@ -2,9 +2,9 @@
 
 # Version-independent agent names used by Dockerfiles 
 MACHINE_AGENT=MachineAgent.zip
-APP_SERVER_AGENT=AppServerAgent.zip
-PHP_AGENT=PhpAgent.zip
-
+APP_SERVER_AGENT=JavaAgent.zip
+PHP_AGENT=PHPAgent.zip
+WEBSERVER_AGENT=webserver_agent.tar.gz
 
 cleanUp() {
 if [ -z ${PREPARE_ONLY} ]; then
@@ -29,7 +29,8 @@ trap cleanUp EXIT
 promptForAgents(){
   read -e -p "Enter path to App Server Agent: " APP_SERVER_AGENT
   read -e -p "Enter path to Machine Agent (zip): " MACHINE_AGENT
-  read -e -p "Enter path to PHP Agents: " PHP_AGENT
+  read -e -p "Enter path to PHP Agent: " PHP_AGENT
+  read -e -p "Enter path to WebServer Agent: " WEBSERVER_AGENT
   read -e -p "Enter path of tomcat Jar: " TOMCAT
 
 
@@ -37,42 +38,34 @@ promptForAgents(){
     ${APP_SERVER_AGENT} 
     ${MACHINE_AGENT}
     ${TOMCAT} 
-    ${PHP_AGENT}"  
+    ${PHP_AGENT}
+    ${WEBSERVER_AGENT}"  
     
-    # Add Machine Agent to build
-    
-cp ${MACHINE_AGENT} Java-App/MachineAgent.zip
-cp ${MACHINE_AGENT} PHP-App/MachineAgent.zip
-cp ${MACHINE_AGENT} Node-App/MachineAgent.zip
-cp ${MACHINE_AGENT} Python-App/MachineAgent.zip
+  echo "Add Machine Agent to build"
+  cp ${MACHINE_AGENT} Java-App/MachineAgent.zip
+  cp ${MACHINE_AGENT} PHP-App/MachineAgent.zip
+  cp ${MACHINE_AGENT} Node-App/MachineAgent.zip
+  cp ${MACHINE_AGENT} Python-App/MachineAgent.zip
+  cp ${MACHINE_AGENT} WebServer/MachineAgent.zip
 
-   # Add App Server Agent to build
-   
-cp ${APP_SERVER_AGENT} Java-App/AppServerAgent.zip
+  echo "Add App Server Agent to build"
+  cp ${APP_SERVER_AGENT} Java-App/JavaAgent.zip
 
-   # Add PHP Agent to build
-   
-cp ${PHP_AGENT} PHP-App/PhpAgent.zip 
+  echo "Add PHP Agent to build"
+  cp ${PHP_AGENT} PHP-App/PHPAgent.zip 
+
+  echo "Add WebServer Agent to build"
+  cp ${WEBSERVER_AGENT} WebServer/webserver_agent.tar.gz
 
   echo "Add tomcat path to build" 
-cp ${TOMCAT} Java-App/apache-tomcat.tar.gz  
+  cp ${TOMCAT} Java-App/apache-tomcat.tar.gz  
 
 }
-
-
 
 if  [ $# -eq 0 ]
 then
   promptForAgents
-  fi
-
-#cp MachineAgent.zip Java-App/
-#cp MachineAgent.zip PHP-App/
-#cp MachineAgent.zip Node-App/
-#cp MachineAgent.zip Python-App/
-
-#cp JavaAgent.zip Java-App/
-#cp PHPAgent.zip PHP-App/
+fi
 
 echo; echo "Building MixApp containers"
 
@@ -87,6 +80,9 @@ echo; echo "Building Node App..."
 
 echo; echo "Building the Java App..."
 (cd Java-App && docker build -t appdynamics/java-app .)
+
+echo; echo "Building the WebServer..."
+(cd WebServer && docker build -t appdynamics/webserver .)
 
 echo "Building the Load Gen Container..."
 (cd Load-Gen && docker build -t appdynamics/mixapp-load .)
