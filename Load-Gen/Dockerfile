@@ -16,6 +16,7 @@ ADD lib/*.jar /load-generator/lib/
 ADD MixAppLoadGenerator.java /load-generator/
 ADD MixAppLoadGenURLs.txt /load-generator/
 
+ADD env.sh /load-generator
 ADD startup.sh /
 RUN chmod +x startup.sh
 

@@ -7,7 +7,7 @@ source ${NATIVE_HOME}/env.sh
 ln -s ${NATIVE_HOME}/WebServerAgent/Apache/libmod_appdynamics.so $HTTPD_24/modules/mod_appdynamics.so
 
 # Set Apache ServerName using container's hostname
-echo "ServerName `hostname`:80" >> $HTTPD24/conf/httpd.conf
+echo "ServerName `hostname`:80" >> $HTTPD_24/conf/httpd.conf
 
 # Configure Controller, Port, App, Tier and Node for mod_appdynamics
 sed -i "s/<your_controller>/${CONTROLLER}/g" $HTTPD_24/02-appd.conf
@@ -18,6 +18,10 @@ sed -i "s/<your_node_name>/${APP_NAME}-${WEB_NODE_NAME}/g" $HTTPD_24/02-appd.con
 sed -i "s/<your_account_name>/${ACCOUNT_NAME%%_*}/g" $HTTPD_24/02-appd.conf
 sed -i "s/<your_access_key>/${ACCESS_KEY}/g" $HTTPD_24/02-appd.conf
 mv ${HTTPD_24}/02-appd.conf ${HTTPD_24}/conf.modules.d/02-appd.conf
+
+# Set http url
+sed -i "s,<url_extension>,${EXT_URL},g" $HTTPD_24/conf.d/http_proxy.conf
+sed -i "s,<destination_url>,${DEST_URL},g" $HTTPD_24/conf.d/http_proxy.conf
 
 # Replacing CDN endpoint for early access to JS Agent
 sed -i "s/cdn.appdynamics.com/s3-us-west-2.amazonaws.com\/adrum/g" ${HTTPD_DOC_ROOT}/adrum.js
@@ -46,8 +50,3 @@ else
 fi
 
 /etc/init.d/httpd24-httpd start
-
-# Start Machine Agent 
-# NOTE: Machine Agent/Web Server Agent race condition
-# Start manually with: docker exec lbr /start-machine-agent.sh
-# ${MACHINE_AGENT_HOME}/start-machine-agent.sh

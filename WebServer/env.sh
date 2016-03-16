@@ -36,6 +36,15 @@ if [ -z "${ACCESS_KEY}" ]; then
         export ACCESS_KEY="your-account-access-key";
 fi
 
+if [ -z "${EXT_URL}"]; then
+        export EXT_URL="/calljavanode";
+fi
+
+if [ -z "${DEST_URL}"]; then
+        export DEST_URL="http://java_app:8080";
+fi
+
+
 export HTTPD_24=/opt/rh/httpd24/root/etc/httpd
 export NATIVE_SDK_HOME=/opt/appdynamics-sdk-native
 export JAVA_OPTS="-Xmx512m -XX:MaxPermSize=256m"

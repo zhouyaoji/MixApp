@@ -12,17 +12,17 @@ This project is composed by 5 containers.
 
 ## Build
 
-Download 4 agents and name them as below, put them in home folder.
-- PHP Agent -> PHPAgent.zip
-- Java (AppServer) Agent -> JavaAgent.zip
-- Machine Agent -> MachineAgent.zip
-- WebServer Agent -> webserver_agent.tar.gz
-
 Modify env.sh for environment variable.
 
 ```
 ./build.sh
 ```
+Provide path to below agents according to prompt:
+- Java App Server Agent (.zip)
+- Machine Agent (.zip)
+- PHP Agent (.zip)
+- Apache WebServer Agent (.tar.gz)
+- Tomcat Jar (.tar.gz)
 
 ## Run
 
