@@ -44,7 +44,7 @@ RUN ${NATIVE_HOME}/install.sh
 RUN ln -s ${NATIVE_HOME}/sdk_lib/lib/libappdynamics_native_sdk.so /usr/lib64/libappdynamics_native_sdk.so
 RUN ln -s ${NATIVE_HOME}/WebServerAgent/Apache/libmod_appdynamics.so $HTTPD_24/modules/mod_appdynamics.so
 
-# ECommerce reverse proxy configuration
+# Proxy configuration - set destination url
 ADD http_proxy.conf ${HTTPD_24}/conf.d/
 
 # Machine Agent
