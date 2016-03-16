@@ -19,7 +19,6 @@ ADD /start.sh /appd/Python-App/
 RUN chmod 777 /appd/Python-App/start.sh
 RUN chown -R appdynamics.appdynamics /appd
 
-
 # Machine Agent
 ADD MachineAgent.zip /
 RUN unzip -q /MachineAgent.zip -d /machine-agent;rm MachineAgent.zip
