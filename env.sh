@@ -3,10 +3,13 @@
 # Set variables
 CONTROLLER=
 APPD_PORT=8090
-
 SSL=off
+
 ACCOUNT_NAME=customer1
+GLOBAL_ACCOUNT_NAME=
 ACCESS_KEY=
+
+EVENT_ENDPOINT=
 
 # Set app variables
 APP_NAME=MixApp
