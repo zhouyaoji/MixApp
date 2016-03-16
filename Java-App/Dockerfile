@@ -14,8 +14,6 @@ RUN echo "oracle-java7-installer shared/accepted-oracle-license-v1-1 boolean tru
 RUN apt-get -y install oracle-java7-installer
 
 # Environment vars: Tomcat
-ENV TOMCAT_MAJOR_VERSION 8
-ENV TOMCAT_MINOR_VERSION 8.0.14
 ENV CATALINA_HOME /tomcat
 
 # Environment settings for startup scripts
@@ -23,12 +21,10 @@ ADD env.sh /
 RUN chmod +x /env.sh
 
 # Install Tomcat
-RUN curl -O -k https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v${TOMCAT_MINOR_VERSION}/bin/apache-tomcat-${TOMCAT_MINOR_VERSION}.tar.gz \
-    && curl -O -k https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v${TOMCAT_MINOR_VERSION}/bin/apache-tomcat-${TOMCAT_MINOR_VERSION}.tar.gz.md5 \
-    && md5sum apache-tomcat-${TOMCAT_MINOR_VERSION}.tar.gz.md5 \
-    && tar zxf apache-tomcat-*.tar.gz \
-    && rm apache-tomcat-*.tar.gz* \
-    && mv apache-tomcat-${TOMCAT_MINOR_VERSION} tomcat
+COPY /apache-tomcat.tar.gz /apache-tomcat.tar.gz
+RUN tar zxf apache-tomcat.tar.gz \
+    && rm apache-tomcat.tar.gz \
+    && mv apache-tomcat* tomcat
 RUN cd ${CATALINA_HOME}/bin;chmod +x *.sh
 
 # App Server Agent Install

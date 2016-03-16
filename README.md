@@ -12,10 +12,11 @@ This project is composed by 5 containers.
 
 ## Build
 
-Download 3 agents and name them as below, put them in home folder.
+Download 4 agents and name them as below, put them in home folder.
 - PHP Agent -> PHPAgent.zip
 - Java (AppServer) Agent -> JavaAgent.zip
 - Machine Agent -> MachineAgent.zip
+- WebServer Agent -> webserver_agent.tar.gz
 
 Modify env.sh for environment variable.
 

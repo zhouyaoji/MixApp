@@ -10,3 +10,7 @@ http://python_app:9000/crossnodejs
 http://nodejs_app:3000/crosspython
 http://nodejs_app:3000/crossjava
 http://nodejs_app:3000/crossphp
+http://webserver:80/crossnodejs
+http://webserver:80/crosspython
+http://webserver:80/crossphp
+http://webserver:80/crossjava
