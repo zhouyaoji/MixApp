@@ -3,10 +3,13 @@
 # Set variables
 CONTROLLER=
 APPD_PORT=8090
-
 SSL=off
+
 ACCOUNT_NAME=customer1
+GLOBAL_ACCOUNT_NAME=
 ACCESS_KEY=
+
+EVENT_ENDPOINT=
 
 # Set app variables
 APP_NAME=MixApp
@@ -20,3 +23,7 @@ JAVA_TIER_NAME=Java-Tier
 JAVA_NODE_NAME=Java-Node
 WEB_TIER_NAME=Web-Tier
 WEB_NODE_NAME=Apache
+
+# Set WebServer sub URL & Destination Node
+EXT_URL=/crossjava
+DEST_URL=http://java_app:8080
