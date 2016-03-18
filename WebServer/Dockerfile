@@ -51,8 +51,8 @@ ADD http_proxy.conf ${HTTPD_24}/conf.d/
 ADD MachineAgent.zip /
 RUN unzip -q /MachineAgent.zip -d /machine-agent
 
-ADD runMachineAgent.sh /
-RUN chmod +x /runMachineAgent.sh
+ADD start-machine-agent.sh /
+RUN chmod +x / start-machine-agent.sh
 
 # Analytics within Machine Agent
 ADD configAnalytics.sh /
