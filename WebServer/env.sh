@@ -36,11 +36,11 @@ if [ -z "${ACCESS_KEY}" ]; then
         export ACCESS_KEY="your-account-access-key";
 fi
 
-if [ -z "${EXT_URL}"]; then
+if [ -z "${EXT_URL}" ]; then
         export EXT_URL="/calljavanode";
 fi
 
-if [ -z "${DEST_URL}"]; then
+if [ -z "${DEST_URL}" ]; then
         export DEST_URL="http://java_app:8080";
 fi
 
