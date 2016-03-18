@@ -5,6 +5,7 @@ MACHINE_AGENT=MachineAgent.zip
 APP_SERVER_AGENT=JavaAgent.zip
 PHP_AGENT=PHPAgent.zip
 WEBSERVER_AGENT=webserver_agent.tar.gz
+CPP_AGENT=appdynamics-sdk-native.tar.gz
 
 cleanUp() {
 if [ -z ${PREPARE_ONLY} ]; then
@@ -14,6 +15,8 @@ if [ -z ${PREPARE_ONLY} ]; then
 (cd PHP-App && rm -f PhpAgent.zip MachineAgent.zip)
 (cd Node-App && rm -f MachineAgent.zip)
 (cd Python-App && rm -f MachineAgent.zip)
+(cd WebServer && rm -f MachineAgent.zip webserver_agent.tar.gz)
+(cd Cpp-App && rm -f appdynamics-sdk-native.tar.gz)
 
 fi
   # Remove dangling images left-over from build
@@ -32,14 +35,15 @@ promptForAgents(){
   read -e -p "Enter path to PHP Agent: " PHP_AGENT
   read -e -p "Enter path to WebServer Agent: " WEBSERVER_AGENT
   read -e -p "Enter path of tomcat Jar: " TOMCAT
-
+  read -e -p "Enter path of C++ Native SDK: " CPP_AGENT
 
   echo "Adding AppDynamics Agents: 
     ${APP_SERVER_AGENT} 
     ${MACHINE_AGENT}
     ${TOMCAT} 
     ${PHP_AGENT}
-    ${WEBSERVER_AGENT}"  
+    ${WEBSERVER_AGENT}
+    ${CPP_AGENT}"  
     
   echo "Add Machine Agent to build"
   cp ${MACHINE_AGENT} Java-App/MachineAgent.zip
@@ -58,7 +62,10 @@ promptForAgents(){
   cp ${WEBSERVER_AGENT} WebServer/webserver_agent.tar.gz
 
   echo "Add tomcat path to build" 
-  cp ${TOMCAT} Java-App/apache-tomcat.tar.gz  
+  cp ${TOMCAT} Java-App/apache-tomcat.tar.gz 
+
+  echo "Add C++ Native SDK path to build" 
+  cp ${CPP_AGENT} Cpp-App/appdynamics-sdk-native.tar.gz 
 
 }
 
@@ -81,11 +88,15 @@ echo; echo "Building Node App..."
 echo; echo "Building the Java App..."
 (cd Java-App && docker build -t appdynamics/java-app .)
 
+echo; echo "Building the C++ Container..."
+(cd Cpp-App && docker build -t appdynamics/cpp-app .)
+
 echo; echo "Building the WebServer..."
 (cd WebServer && docker build -t appdynamics/webserver .)
 
 echo; echo "Building the Load Gen Container..."
 (cd Load-Gen && docker build -t appdynamics/mixapp-load .)
+
 
 HOSTNAME=`hostname`
 

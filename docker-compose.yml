@@ -36,7 +36,7 @@ services:
     image: appdynamics/java-app
     ports:
       - "3003:8080"
-      
+
   webserver:
     container_name: webserver
     hostname: HOST_NAME-webserver
@@ -46,6 +46,18 @@ services:
     ports:
       - "3004:80"
 
+  cpp_app:
+    container_name: cpp_app
+    hostname: HOST_NAME-cpp_app
+    depends_on:
+      - java_app
+      - nodejs_app
+      - python_app
+      - php_app
+    env_file: 
+      - ./env.sh
+    image: appdynamics/cpp-app
+      
   mixapp_load:
     container_name: mixapp_load
     hostname: HOST_NAME-mixapp_load
@@ -54,8 +66,9 @@ services:
     image: appdynamics/mixapp-load
     external_links:
       - webserver
-      - java-app
+      - java_app
       - nodejs_app
       - python_app
       - php_app
+      - cpp_app
       
