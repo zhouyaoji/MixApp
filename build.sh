@@ -16,7 +16,7 @@ if [ -z ${PREPARE_ONLY} ]; then
 (cd Node-App && rm -f MachineAgent.zip)
 (cd Python-App && rm -f MachineAgent.zip)
 (cd WebServer && rm -f MachineAgent.zip webserver_agent.tar.gz)
-(cd Cpp-App && rm -f appdynamics-sdk-native.tar.gz)
+(cd Cpp-App && rm -f appdynamics-sdk-native.tar.gz MachineAgent.zip)
 
 fi
   # Remove dangling images left-over from build
@@ -51,6 +51,7 @@ promptForAgents(){
   cp ${MACHINE_AGENT} Node-App/MachineAgent.zip
   cp ${MACHINE_AGENT} Python-App/MachineAgent.zip
   cp ${MACHINE_AGENT} WebServer/MachineAgent.zip
+  cp ${MACHINE_AGENT} Cpp-App/MachineAgent.zip
 
   echo "Add App Server Agent to build"
   cp ${APP_SERVER_AGENT} Java-App/JavaAgent.zip

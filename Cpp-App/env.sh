@@ -35,3 +35,11 @@ fi
 if [ -z "${ACCESS_KEY}" ]; then
         export ACCESS_KEY="your-account-access-key";
 fi
+
+# Required to start Machine Agent
+export MACHINE_AGENT_HOME=/machine-agent
+export JAVA_OPTS="-Xmx512m -XX:MaxPermSize=256m"
+
+# Removed Tier and Node name to avoid the known bug - Machine Agent overtaking App Agent
+export APPD_JAVA_OPTS="-Dappdynamics.controller.hostName=${CONTROLLER} -Dappdynamics.controller.port=${APPD_PORT} -Dappdynamics.agent.applicationName=${APP_NAME} -Dappdynamics.agent.accountName=${ACCOUNT_NAME} -Dappdynamics.agent.accountAccessKey=${ACCESS_KEY}";
+export MACHINE_AGENT_JAVA_OPTS="-Dappdynamics.sim.enabled=true ${JAVA_OPTS} ${APPD_JAVA_OPTS}"

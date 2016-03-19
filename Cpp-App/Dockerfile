@@ -25,6 +25,18 @@ RUN chmod 777 ${NATIVE_HOME}/logs
 RUN chmod 744 ${NATIVE_HOME}/install.sh
 RUN ${NATIVE_HOME}/install.sh
 
+# Machine Agent
+ADD MachineAgent.zip /
+RUN unzip -q /MachineAgent.zip -d /machine-agent;rm MachineAgent.zip
+
+ADD runMachineAgent.sh /
+RUN chmod +x /runMachineAgent.sh
+
+# Analytics within Machine Agent
+ADD configAnalytics.sh /
+RUN chmod +x /configAnalytics.sh
+
+# Add C++ app and build script
 ADD ./app/ $NATIVE_HOME/app
 ADD build.sh $NATIVE_HOME/
 ADD env.sh $NATIVE_HOME/

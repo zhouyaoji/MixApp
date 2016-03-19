@@ -3,12 +3,14 @@
 Mixed language applications packaged in Docker containers.
 
 ## Project Structure
-This project is composed by 5 containers.
+This project is composed by 7 containers.
 - Java-App
 - Node-App
 - PHP-App
 - Python-App
+- Cpp-App
 - LoadGenerator
+- WebServer
 
 ## Build
 
@@ -23,6 +25,7 @@ Provide path to below agents according to prompt:
 - PHP Agent (.zip)
 - Apache WebServer Agent (.tar.gz)
 - Tomcat Jar (.tar.gz)
+- C++ Native SDK (tar.gz)
 
 ## Run
 
