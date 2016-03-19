@@ -246,6 +246,7 @@ int main(int argc, char** argv)
 
     int halfsec = 1;
     int minute = 1;
+
     while(minute <= 1440)
     {
         appd_bt_handle btHandle = appd_bt_begin("<cpp_file_name>", NULL);
