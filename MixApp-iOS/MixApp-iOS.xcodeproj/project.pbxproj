@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		384FF799E961479987666F5E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5FF12D3EB6AF66D9B0F251E /* libPods.a */; };
+		FC6608DF1CA19D71006FAD00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6608DE1CA19D71006FAD00 /* AppDelegate.swift */; };
+		FC6608E11CA19D71006FAD00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6608E01CA19D71006FAD00 /* ViewController.swift */; };
+		FC6608E41CA19D71006FAD00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6608E21CA19D71006FAD00 /* Main.storyboard */; };
+		FC6608E61CA19D71006FAD00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6608E51CA19D71006FAD00 /* Assets.xcassets */; };
+		FC6608E91CA19D71006FAD00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6608E71CA19D71006FAD00 /* LaunchScreen.storyboard */; };
+		FC6608F41CA19D71006FAD00 /* MixApp_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6608F31CA19D71006FAD00 /* MixApp_iOSTests.swift */; };
+		FC6608FF1CA19D71006FAD00 /* MixApp_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6608FE1CA19D71006FAD00 /* MixApp_iOSUITests.swift */; };
+		FC6609101CA19F28006FAD00 /* MixApp.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC66090F1CA19F28006FAD00 /* MixApp.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FC6608F01CA19D71006FAD00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC6608D31CA19D71006FAD00 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC6608DA1CA19D71006FAD00;
+			remoteInfo = "MixApp-iOS";
+		};
+		FC6608FB1CA19D71006FAD00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC6608D31CA19D71006FAD00 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC6608DA1CA19D71006FAD00;
+			remoteInfo = "MixApp-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9AFC91A7B563F41331867F1D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9E1C4AD877E14D4C302E19CF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D5FF12D3EB6AF66D9B0F251E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6608DB1CA19D71006FAD00 /* MixApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MixApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6608DE1CA19D71006FAD00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FC6608E01CA19D71006FAD00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FC6608E31CA19D71006FAD00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FC6608E51CA19D71006FAD00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC6608E81CA19D71006FAD00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FC6608EA1CA19D71006FAD00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC6608EF1CA19D71006FAD00 /* MixApp-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MixApp-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6608F31CA19D71006FAD00 /* MixApp_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixApp_iOSTests.swift; sourceTree = "<group>"; };
+		FC6608F51CA19D71006FAD00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC6608FA1CA19D71006FAD00 /* MixApp-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MixApp-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6608FE1CA19D71006FAD00 /* MixApp_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixApp_iOSUITests.swift; sourceTree = "<group>"; };
+		FC6609001CA19D71006FAD00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC66090C1CA19D9C006FAD00 /* MixApp-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MixApp-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		FC66090F1CA19F28006FAD00 /* MixApp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MixApp.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC6608D81CA19D71006FAD00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				384FF799E961479987666F5E /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC6608EC1CA19D71006FAD00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC6608F71CA19D71006FAD00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A5A570F7BA45CE5E0DEA284 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5FF12D3EB6AF66D9B0F251E /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61BEE22730E7ACB662DC6B04 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E1C4AD877E14D4C302E19CF /* Pods.debug.xcconfig */,
+				9AFC91A7B563F41331867F1D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FC6608D21CA19D71006FAD00 = {
+			isa = PBXGroup;
+			children = (
+				FC66090C1CA19D9C006FAD00 /* MixApp-iOS-Bridging-Header.h */,
+				FC6608DD1CA19D71006FAD00 /* MixApp-iOS */,
+				FC6608F21CA19D71006FAD00 /* MixApp-iOSTests */,
+				FC6608FD1CA19D71006FAD00 /* MixApp-iOSUITests */,
+				FC6608DC1CA19D71006FAD00 /* Products */,
+				61BEE22730E7ACB662DC6B04 /* Pods */,
+				3A5A570F7BA45CE5E0DEA284 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FC6608DC1CA19D71006FAD00 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC6608DB1CA19D71006FAD00 /* MixApp-iOS.app */,
+				FC6608EF1CA19D71006FAD00 /* MixApp-iOSTests.xctest */,
+				FC6608FA1CA19D71006FAD00 /* MixApp-iOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC6608DD1CA19D71006FAD00 /* MixApp-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				FC6608DE1CA19D71006FAD00 /* AppDelegate.swift */,
+				FC6608E01CA19D71006FAD00 /* ViewController.swift */,
+				FC6608E21CA19D71006FAD00 /* Main.storyboard */,
+				FC6608E51CA19D71006FAD00 /* Assets.xcassets */,
+				FC6608E71CA19D71006FAD00 /* LaunchScreen.storyboard */,
+				FC6608EA1CA19D71006FAD00 /* Info.plist */,
+				FC66090F1CA19F28006FAD00 /* MixApp.plist */,
+			);
+			path = "MixApp-iOS";
+			sourceTree = "<group>";
+		};
+		FC6608F21CA19D71006FAD00 /* MixApp-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				FC6608F31CA19D71006FAD00 /* MixApp_iOSTests.swift */,
+				FC6608F51CA19D71006FAD00 /* Info.plist */,
+			);
+			path = "MixApp-iOSTests";
+			sourceTree = "<group>";
+		};
+		FC6608FD1CA19D71006FAD00 /* MixApp-iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FC6608FE1CA19D71006FAD00 /* MixApp_iOSUITests.swift */,
+				FC6609001CA19D71006FAD00 /* Info.plist */,
+			);
+			path = "MixApp-iOSUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FC6608DA1CA19D71006FAD00 /* MixApp-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC6609031CA19D71006FAD00 /* Build configuration list for PBXNativeTarget "MixApp-iOS" */;
+			buildPhases = (
+				FA1BFD6A354A0A7CF50D11DE /* Check Pods Manifest.lock */,
+				FC6608D71CA19D71006FAD00 /* Sources */,
+				FC6608D81CA19D71006FAD00 /* Frameworks */,
+				FC6608D91CA19D71006FAD00 /* Resources */,
+				EB2816EBF059C215AFCF7D37 /* Embed Pods Frameworks */,
+				BFBA626D98406CF16886A4C7 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MixApp-iOS";
+			productName = "MixApp-iOS";
+			productReference = FC6608DB1CA19D71006FAD00 /* MixApp-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FC6608EE1CA19D71006FAD00 /* MixApp-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC6609061CA19D71006FAD00 /* Build configuration list for PBXNativeTarget "MixApp-iOSTests" */;
+			buildPhases = (
+				FC6608EB1CA19D71006FAD00 /* Sources */,
+				FC6608EC1CA19D71006FAD00 /* Frameworks */,
+				FC6608ED1CA19D71006FAD00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FC6608F11CA19D71006FAD00 /* PBXTargetDependency */,
+			);
+			name = "MixApp-iOSTests";
+			productName = "MixApp-iOSTests";
+			productReference = FC6608EF1CA19D71006FAD00 /* MixApp-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FC6608F91CA19D71006FAD00 /* MixApp-iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC6609091CA19D71006FAD00 /* Build configuration list for PBXNativeTarget "MixApp-iOSUITests" */;
+			buildPhases = (
+				FC6608F61CA19D71006FAD00 /* Sources */,
+				FC6608F71CA19D71006FAD00 /* Frameworks */,
+				FC6608F81CA19D71006FAD00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FC6608FC1CA19D71006FAD00 /* PBXTargetDependency */,
+			);
+			name = "MixApp-iOSUITests";
+			productName = "MixApp-iOSUITests";
+			productReference = FC6608FA1CA19D71006FAD00 /* MixApp-iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FC6608D31CA19D71006FAD00 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = AppDynamics;
+				TargetAttributes = {
+					FC6608DA1CA19D71006FAD00 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					FC6608EE1CA19D71006FAD00 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = FC6608DA1CA19D71006FAD00;
+					};
+					FC6608F91CA19D71006FAD00 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = FC6608DA1CA19D71006FAD00;
+					};
+				};
+			};
+			buildConfigurationList = FC6608D61CA19D71006FAD00 /* Build configuration list for PBXProject "MixApp-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FC6608D21CA19D71006FAD00;
+			productRefGroup = FC6608DC1CA19D71006FAD00 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FC6608DA1CA19D71006FAD00 /* MixApp-iOS */,
+				FC6608EE1CA19D71006FAD00 /* MixApp-iOSTests */,
+				FC6608F91CA19D71006FAD00 /* MixApp-iOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FC6608D91CA19D71006FAD00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC6608E91CA19D71006FAD00 /* LaunchScreen.storyboard in Resources */,
+				FC6609101CA19F28006FAD00 /* MixApp.plist in Resources */,
+				FC6608E61CA19D71006FAD00 /* Assets.xcassets in Resources */,
+				FC6608E41CA19D71006FAD00 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC6608ED1CA19D71006FAD00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC6608F81CA19D71006FAD00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BFBA626D98406CF16886A4C7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB2816EBF059C215AFCF7D37 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA1BFD6A354A0A7CF50D11DE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC6608D71CA19D71006FAD00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC6608E11CA19D71006FAD00 /* ViewController.swift in Sources */,
+				FC6608DF1CA19D71006FAD00 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC6608EB1CA19D71006FAD00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC6608F41CA19D71006FAD00 /* MixApp_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC6608F61CA19D71006FAD00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC6608FF1CA19D71006FAD00 /* MixApp_iOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FC6608F11CA19D71006FAD00 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC6608DA1CA19D71006FAD00 /* MixApp-iOS */;
+			targetProxy = FC6608F01CA19D71006FAD00 /* PBXContainerItemProxy */;
+		};
+		FC6608FC1CA19D71006FAD00 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC6608DA1CA19D71006FAD00 /* MixApp-iOS */;
+			targetProxy = FC6608FB1CA19D71006FAD00 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FC6608E21CA19D71006FAD00 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC6608E31CA19D71006FAD00 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FC6608E71CA19D71006FAD00 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC6608E81CA19D71006FAD00 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FC6609011CA19D71006FAD00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FC6609021CA19D71006FAD00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FC6609041CA19D71006FAD00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E1C4AD877E14D4C302E19CF /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = "MixApp-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appdynamics.e2e.MixApp-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MixApp-iOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FC6609051CA19D71006FAD00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AFC91A7B563F41331867F1D /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = "MixApp-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appdynamics.e2e.MixApp-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MixApp-iOS-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		FC6609071CA19D71006FAD00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "MixApp-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appdynamics.e2e.MixApp-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MixApp-iOS.app/MixApp-iOS";
+			};
+			name = Debug;
+		};
+		FC6609081CA19D71006FAD00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "MixApp-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appdynamics.e2e.MixApp-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MixApp-iOS.app/MixApp-iOS";
+			};
+			name = Release;
+		};
+		FC66090A1CA19D71006FAD00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "MixApp-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appdynamics.e2e.MixApp-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "MixApp-iOS";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		FC66090B1CA19D71006FAD00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "MixApp-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appdynamics.e2e.MixApp-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "MixApp-iOS";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FC6608D61CA19D71006FAD00 /* Build configuration list for PBXProject "MixApp-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC6609011CA19D71006FAD00 /* Debug */,
+				FC6609021CA19D71006FAD00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC6609031CA19D71006FAD00 /* Build configuration list for PBXNativeTarget "MixApp-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC6609041CA19D71006FAD00 /* Debug */,
+				FC6609051CA19D71006FAD00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC6609061CA19D71006FAD00 /* Build configuration list for PBXNativeTarget "MixApp-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC6609071CA19D71006FAD00 /* Debug */,
+				FC6609081CA19D71006FAD00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC6609091CA19D71006FAD00 /* Build configuration list for PBXNativeTarget "MixApp-iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC66090A1CA19D71006FAD00 /* Debug */,
+				FC66090B1CA19D71006FAD00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FC6608D31CA19D71006FAD00 /* Project object */;
+}
