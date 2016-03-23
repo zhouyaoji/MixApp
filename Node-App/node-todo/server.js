@@ -6,7 +6,8 @@ require("appdynamics").profile({
     accountAccessKey: 'ACCESS_KEY', // Required for a controller running in multi-tenant mode
     applicationName: 'APP_NAME',
     tierName: 'NODE_TIER_NAME',
-    nodeName: 'NODE_NODE_NAME' // The controller will automatically append the node name with a unique number
+    nodeName: 'NODE_NODE_NAME', // The controller will automatically append the node name with a unique number
+    debug: 'true'
 });
 
 // set up ======================================================================
