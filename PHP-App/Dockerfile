@@ -31,9 +31,7 @@ ADD env.sh /
 RUN chmod +x /env.sh
 
 # Install bits and setup install for AppD Agent
-ADD PHPAgent.zip /var/www/
-RUN unzip -o -d /var/www/ /var/www/PHPAgent.zip
-RUN tar -xvjf /var/www/appdynamics-php-agent/*.tar.bz2 -C /var/www/
+ADD PHPAgent.tar.gz /var/www/
 RUN chmod 777 /var/www/appdynamics-php-agent/logs
 RUN chmod -R 755 /var/www/appdynamics-php-agent/php
 
@@ -41,7 +39,7 @@ RUN chmod -R 755 /var/www/appdynamics-php-agent/php
 ADD appdynamics_agent_log4cxx.xml.template /var/www/appdynamics-php-agent/php/conf
 
 # Machine Agent
-ADD MachineAgent.zip /
+COPY MachineAgent.zip /
 RUN unzip -q /MachineAgent.zip -d /machine-agent;rm MachineAgent.zip
 
 ADD runMachineAgent.sh /

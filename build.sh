@@ -3,22 +3,20 @@
 # Version-independent agent names used by Dockerfiles 
 MACHINE_AGENT=MachineAgent.zip
 APP_SERVER_AGENT=JavaAgent.zip
-PHP_AGENT=PHPAgent.zip
+PHP_AGENT=PHPAgent.tar.bz2
 WEBSERVER_AGENT=webserver_agent.tar.gz
 CPP_AGENT=appdynamics-sdk-native.tar.gz
+TOMCAT=apache-tomcat.tar.gz
 
-cleanUp() {
-if [ -z ${PREPARE_ONLY} ]; then
- echo "Deleting Older Agents"
-# Delete agent distros from docker build dirs
-(cd Java-App && rm -f AppServerAgent.zip MachineAgent.zip apache-tomcat.tar.gz)
-(cd PHP-App && rm -f PhpAgent.zip MachineAgent.zip)
-(cd Node-App && rm -f MachineAgent.zip)
-(cd Python-App && rm -f MachineAgent.zip)
-(cd WebServer && rm -f MachineAgent.zip webserver_agent.tar.gz)
-(cd Cpp-App && rm -f appdynamics-sdk-native.tar.gz MachineAgent.zip)
+cleanUp(){
+  # Delete agent distros from docker build dirs
+  (cd Java-App && rm -f ${APP_SERVER_AGENT} ${MACHINE_AGENT} ${TOMCAT})
+  (cd PHP-App && rm -f ${PHP_AGENT} ${MACHINE_AGENT})
+  (cd Node-App && rm -f ${MACHINE_AGENT})
+  (cd Python-App && rm -f ${MACHINE_AGENT})
+  (cd WebServer && rm -f ${MACHINE_AGENT} ${WEBSERVER_AGENT})
+  (cd Cpp-App && rm -f ${CPP_AGENT} ${MACHINE_AGENT})
 
-fi
   # Remove dangling images left-over from build
   if [[ `docker images -q --filter "dangling=true"` ]]
   then
@@ -30,50 +28,112 @@ fi
 trap cleanUp EXIT
 
 promptForAgents(){
-  read -e -p "Enter path to App Server Agent: " APP_SERVER_AGENT
-  read -e -p "Enter path to Machine Agent (zip): " MACHINE_AGENT
-  read -e -p "Enter path to PHP Agent: " PHP_AGENT
-  read -e -p "Enter path to WebServer Agent: " WEBSERVER_AGENT
-  read -e -p "Enter path of tomcat Jar: " TOMCAT
-  read -e -p "Enter path of C++ Native SDK: " CPP_AGENT
-
-  echo "Adding AppDynamics Agents: 
-    ${APP_SERVER_AGENT} 
-    ${MACHINE_AGENT}
-    ${TOMCAT} 
-    ${PHP_AGENT}
-    ${WEBSERVER_AGENT}
-    ${CPP_AGENT}"  
-    
-  echo "Add Machine Agent to build"
-  cp ${MACHINE_AGENT} Java-App/MachineAgent.zip
-  cp ${MACHINE_AGENT} PHP-App/MachineAgent.zip
-  cp ${MACHINE_AGENT} Node-App/MachineAgent.zip
-  cp ${MACHINE_AGENT} Python-App/MachineAgent.zip
-  cp ${MACHINE_AGENT} WebServer/MachineAgent.zip
-  cp ${MACHINE_AGENT} Cpp-App/MachineAgent.zip
-
-  echo "Add App Server Agent to build"
-  cp ${APP_SERVER_AGENT} Java-App/JavaAgent.zip
-
-  echo "Add PHP Agent to build"
-  cp ${PHP_AGENT} PHP-App/PHPAgent.zip 
-
-  echo "Add WebServer Agent to build"
-  cp ${WEBSERVER_AGENT} WebServer/webserver_agent.tar.gz
-
-  echo "Add tomcat path to build" 
-  cp ${TOMCAT} Java-App/apache-tomcat.tar.gz 
-
-  echo "Add C++ Native SDK path to build" 
-  cp ${CPP_AGENT} Cpp-App/appdynamics-sdk-native.tar.gz 
-
+  read -e -p "Enter path to App Server Agent (.zip): " APP_SERVER_AGENT_PATH
+  read -e -p "Enter path to Machine Agent (.zip): " MACHINE_AGENT_PATH
+  read -e -p "Enter path to PHP Agent (.tar.bz2): " PHP_AGENT_PATH
+  read -e -p "Enter path to WebServer Agent (.zip): " WEBSERVER_AGENT_PATH
+  read -e -p "Enter path of Tomcat (.tar.gz): " TOMCAT_PATH
+  read -e -p "Enter path of C++ Native SDK (.tar.gz): " CPP_AGENT_PATH
 }
+
+copyAgents(){
+  echo "Adding AppDynamics Agents: 
+  App Server Agent: ${APP_SERVER_AGENT_PATH} 
+  Machine Agent:  ${MACHINE_AGENT_PATH}
+  Tomcat: ${TOMCAT_PATH} 
+  Php Agent  ${PHP_AGENT_PATH}
+  Web Server Agent: ${WEBSERVER_AGENT_PATH}
+  C++ Agent: ${CPP_AGENT_PATH}"  
+    
+  echo "Adding Machine Agent to build"
+  cp ${MACHINE_AGENT_PATH} Java-App/${MACHINE_AGENT}
+  cp ${MACHINE_AGENT_PATH} PHP-App/${MACHINE_AGENT}
+  cp ${MACHINE_AGENT_PATH} Node-App/${MACHINE_AGENT}
+  cp ${MACHINE_AGENT_PATH} Python-App/${MACHINE_AGENT}
+  cp ${MACHINE_AGENT_PATH} WebServer/${MACHINE_AGENT}
+  cp ${MACHINE_AGENT_PATH} Cpp-App/${MACHINE_AGENT}
+
+  echo "Adding App Server Agent to build"
+  cp ${APP_SERVER_AGENT_PATH} Java-App/${APP_SERVER_AGENT}
+
+  echo "Adding PHP Agent to build"
+  cp ${PHP_AGENT_PATH} PHP-App/${PHP_AGENT}
+
+  echo "Adding WebServer Agent to build"
+  cp ${WEBSERVER_AGENT_PATH} WebServer/${WEBSERVER_AGENT}
+
+  echo "Adding tomcat path to build" 
+  cp ${TOMCAT_PATH} Java-App/${TOMCAT} 
+
+  echo "Adding C++ Native SDK path to build" 
+  cp ${CPP_AGENT_PATH} Cpp-App/${CPP_AGENT} 
+}
+
+# Usage information
+if [[ $1 == *--help* ]]
+then
+  echo "Specify agent locations: build.sh
+          -a <Path to App Server Agent>
+          -c <Path to C++ Agent>
+          -m <Path to Machine Agent>
+          -p <Path to Php Agent>
+          -t <Path to Tomcat>
+          -w <Path to Web Server Agent>"
+  echo "Prompt for agent locations: build.sh"
+  exit 0
+fi
 
 if  [ $# -eq 0 ]
 then
   promptForAgents
+else
+  # Allow user to specify locations of Agent installers
+  while getopts "a:c:m:p:t:w:" opt; do
+    case $opt in
+      a)
+        APP_SERVER_AGENT_PATH=$OPTARG
+        if [ ! -e ${APP_SERVER_AGENT_PATH} ]; then
+          echo "Not found: ${APP_SERVER_AGENT_PATH}"; exit 1
+        fi
+        ;;
+      c)
+        CPP_AGENT_PATH=$OPTARG
+        if [ ! -e ${CPP_AGENT_PATH} ]; then
+          echo "Not found: ${CPP_AGENT_PATH}"; exit 1
+        fi
+        ;; 
+      m)
+        export MACHINE_AGENT_PATH=$OPTARG
+        if [ ! -e ${MACHINE_AGENT_PATH} ]; then
+          echo "Not found: ${MACHINE_AGENT_PATH}"; exit 1
+        fi
+        ;;
+      p)
+        export PHP_AGENT_PATH=$OPTARG 
+	if [ ! -e ${PHP_AGENT_PATH} ]; then
+          echo "Not found: ${PHP_AGENT_PATH}"; exit 1        
+        fi
+        ;;
+      t)
+        export TOMCAT_PATH=$OPTARG 
+	if [ ! -e ${TOMCAT_PATH} ]; then
+          echo "Not found: ${TOMCAT_PATH}"; exit 1        
+        fi
+        ;;
+      w)
+        export WEBSERVER_AGENT_PATH=$OPTARG
+        if [ ! -e ${WEBSERVER_AGENT_PATH} ]; then
+          echo "Not found: ${WEBSERVER_AGENT_PATH}"; exit 1
+        fi
+        ;;
+      \?)
+        echo "Invalid option: -$OPTARG"
+        ;;
+    esac
+  done
 fi
+
+copyAgents
 
 echo; echo "Building MixApp containers"
 
