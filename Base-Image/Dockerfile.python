@@ -1,6 +1,6 @@
 FROM appdynamics/python-base
 
-################## BEGIN INSTALLATION ######################
+MAINTAINER Jennifer Li (jennifer.li@appdynamics.com)
 
 # Install Java
 RUN apt-get update

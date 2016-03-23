@@ -1,17 +1,6 @@
-FROM centos:centos6
+FROM appdynamics/mixapp-base:node
 
 MAINTAINER Jennifer Li (jennifer.li@appdynamics.com)
-
-# Enable EPEL for Node.js
-RUN rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-
-# Install npm
-RUN yum install -y npm --enablerepo=epel
-RUN npm config set registry http://registry.npmjs.org/
-RUN yum install -y vim
-RUN yum install -y git
-RUN yum install -y unzip
-RUN yum -y install java-1.7.0-openjdk-devel
 
 # Add app source
 RUN mkdir /node-todo

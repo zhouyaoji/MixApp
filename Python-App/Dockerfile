@@ -1,10 +1,6 @@
-FROM appdynamics/python-base
+FROM appdynamics/mixapp-base:python
 
-################## BEGIN INSTALLATION ######################
-
-# Install Java
-RUN apt-get update
-RUN apt-get -y install default-jdk
+MAINTAINER Jennifer Li (jennifer.li@appdynamics.com)
 
 # Install app
 ADD . /appd/Python-App
@@ -29,8 +25,6 @@ RUN chmod +x /runMachineAgent.sh
 # Analytics within Machine Agent
 ADD configAnalytics.sh /
 RUN chmod +x /configAnalytics.sh
-
-##################### INSTALLATION END #####################
 
 # Expose Ports
 EXPOSE 9000
