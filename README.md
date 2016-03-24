@@ -14,7 +14,12 @@ This project is composed by 7 containers.
 
 ## Build
 
-Modify env.sh for environment variable.
+1. Build base images:
+```
+./Base-Image/build.sh
+```
+
+2. Modify env.sh for environment variable, then run:
 
 ```
 ./build.sh
@@ -22,7 +27,7 @@ Modify env.sh for environment variable.
 Provide path to below agents according to prompt:
 - Java App Server Agent (.zip)
 - Machine Agent (.zip)
-- PHP Agent (.zip)
+- PHP Agent (.tar.bz)
 - Apache WebServer Agent (.tar.gz)
 - Tomcat Jar (.tar.gz)
 - C++ Native SDK (tar.gz)
