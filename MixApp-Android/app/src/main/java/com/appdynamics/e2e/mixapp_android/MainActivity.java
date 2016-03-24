@@ -22,8 +22,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.appdynamics.eumagent.runtime.Instrumentation;
+
 public class MainActivity extends AppCompatActivity {
     final String TAG = MainActivity.class.getName();
+    private Button[] btns = new Button[5];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +35,44 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Instrumentation.start(PreferenceConstants.EUM_APP_KEY, getApplicationContext(), PreferenceConstants.EUM_COLLECTOR_URL, true);
+
         Button button = (Button) findViewById(R.id.test_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 new TestHttpRequest("GET").execute("https://www.appdynamics.com");
             }
         });
+
+        // You have to have MixApp containers running for below links to work
+        Button java_button = (Button) findViewById(R.id.test_java_button);
+        java_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                new TestHttpRequest("GET").execute(PreferenceConstants.END_POINT_URL + ":3003/");
+            }
+        });
+
+        Button php_button = (Button) findViewById(R.id.test_php_button);
+        php_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                new TestHttpRequest("GET").execute(PreferenceConstants.END_POINT_URL + ":3002/");
+            }
+        });
+
+        Button python_button = (Button) findViewById(R.id.test_python_button);
+        python_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                new TestHttpRequest("GET").execute(PreferenceConstants.END_POINT_URL + ":3001/");
+            }
+        });
+
+        Button nodejs_button = (Button) findViewById(R.id.test_nodejs_button);
+        nodejs_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                new TestHttpRequest("GET").execute(PreferenceConstants.END_POINT_URL + ":3000/");
+            }
+        });
+
     }
 
     @Override
@@ -135,10 +170,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, ex.getMessage());
             }
             catch (Exception e) {
-                    Log.d(TAG, e.getMessage());
+                Log.d(TAG, e.getMessage());
             }
             finally {
-                    connection.disconnect();
+                connection.disconnect();
             }
 
             return responseBody;

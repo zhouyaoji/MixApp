@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'adeum'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "24.0.0 rc1"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "com.appdynamics.e2e.mixapp_android"
@@ -24,4 +25,12 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.android.support:design:23.2.1'
+    compile 'com.appdynamics:appdynamics-runtime:4.+'
+}
+
+adeum { // this section added for AppDynamics
+    account {
+        name 'e2e-demo-master'
+        licenseKey '1be847c2-d645-48cc-bca4-bc304ef6756b'
+    }
 }
