@@ -1,4 +1,13 @@
 .DS_Store
-MachineAgent.zip
-JavaAgent.zip
 
+# Ignore agents
+*MachineAgent.zip
+*JavaAgent.zip
+*PHPAgent.zip
+
+# Ignore logs
+*_logs.zip
+
+# Ignore personal environment variables
+env*.sh
+*PreferenceConstants.java
