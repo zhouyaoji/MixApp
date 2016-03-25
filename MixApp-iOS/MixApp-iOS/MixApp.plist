@@ -9,6 +9,11 @@
 -->
 <plist version="1.0">
     <dict>
-    
+        <key>Server URL</key>
+        <string></string>
+        <key>EUM App Key</key>
+        <string></string>
+        <key>EUM Collector URL</key>
+        <string></string>
     </dict>
 </plist>
