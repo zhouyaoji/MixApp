@@ -35,10 +35,11 @@ ADD TechStack.war ${CATALINA_HOME}/webapps/
 
 # Startup scripts
 ADD startup.sh /
-#ADD start-appserver-agent.sh /
-
 RUN chmod +x /startup.sh
-#RUN chmod +x /start-appserver-agent.sh
+
+# Get logs script
+ADD get_logs.sh /
+RUN chmod +x /get_logs.sh
 
 WORKDIR /
 
