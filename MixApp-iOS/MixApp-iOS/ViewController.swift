@@ -73,5 +73,32 @@ class ViewController: UIViewController {
         self.doHttpGet(NSURL(string: url!)!)
     }
 
+    @IBAction func TestJavaConnection(sender: AnyObject) {
+        NSLog("Test Java Connection")
+        var url = NSUserDefaults.standardUserDefaults().stringForKey("url")
+        url = "\(url!)\(":3003/")"
+        self.doHttpGet(NSURL(string: url!)!)
+    }
+    
+    @IBAction func TestPHPConnection(sender: AnyObject) {
+        NSLog("Test PHP Connection")
+        var url = NSUserDefaults.standardUserDefaults().stringForKey("url")
+        url = "\(url!)\(":3002/")"
+        self.doHttpGet(NSURL(string: url!)!)
+    }
+    
+    @IBAction func TestPythonConnection(sender: AnyObject) {
+        NSLog("Test Python Connection")
+        var url = NSUserDefaults.standardUserDefaults().stringForKey("url")
+        url = "\(url!)\(":3001/")"
+        self.doHttpGet(NSURL(string: url!)!)
+    }
+    
+    @IBAction func TestNodejsConnection(sender: AnyObject) {
+        NSLog("Test Node.js Connection")
+        var url = NSUserDefaults.standardUserDefaults().stringForKey("url")
+        url = "\(url!)\(":3000/")"
+        self.doHttpGet(NSURL(string: url!)!)
+    }
 }
 

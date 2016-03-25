@@ -24,10 +24,46 @@
                                     <action selector="onTestHttpConnection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="39o-gL-d49"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="km6-8T-0PD">
+                                <rect key="frame" x="227" y="198" width="148" height="30"/>
+                                <state key="normal" title="Test Java Connection"/>
+                                <connections>
+                                    <action selector="TestJavaConnection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yP6-G1-3VS"/>
+                                    <action selector="onTestHttpConnection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Ys-as-bny"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OO-JB-XC0">
+                                <rect key="frame" x="228" y="269" width="146" height="30"/>
+                                <state key="normal" title="Test PHP Connection"/>
+                                <connections>
+                                    <action selector="TestPHPConnection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UhV-FS-jk9"/>
+                                    <action selector="onTestHttpConnection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yGQ-vX-bj4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZi-4Y-tK5">
+                                <rect key="frame" x="218" y="343" width="165" height="30"/>
+                                <state key="normal" title="Test Python Connection"/>
+                                <connections>
+                                    <action selector="TestPythonConnection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="swC-Ip-EyY"/>
+                                    <action selector="onTestHttpConnection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WZr-Ck-pKy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTu-wI-agm">
+                                <rect key="frame" x="217" y="417" width="168" height="30"/>
+                                <state key="normal" title="Test Node.js Connection"/>
+                                <connections>
+                                    <action selector="TestNodejsConnection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nC5-Fd-yx3"/>
+                                    <action selector="onTestHttpConnection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s8w-7m-wpY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ihU-h2-TzN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="543-pM-g40"/>
+                            <constraint firstItem="AZi-4Y-tK5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9oG-ov-TCN"/>
+                            <constraint firstItem="km6-8T-0PD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fiH-K0-1mR"/>
+                            <constraint firstItem="bTu-wI-agm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mjw-Qm-Q6j"/>
+                            <constraint firstItem="8OO-JB-XC0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zWi-pW-XjA"/>
                         </constraints>
                     </view>
                 </viewController>
