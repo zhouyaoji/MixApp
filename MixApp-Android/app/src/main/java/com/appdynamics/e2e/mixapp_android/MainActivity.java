@@ -1,7 +1,10 @@
 package com.appdynamics.e2e.mixapp_android;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -34,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Set Shared Preferences for Server URL, EUM Collector URL and EUM AppKey
+        setSharedPreferences();
 
         Instrumentation.start(PreferenceConstants.EUM_APP_KEY, getApplicationContext(), PreferenceConstants.EUM_COLLECTOR_URL, true);
 
@@ -91,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent detailIntent = new Intent(this, SettingsActivity.class);
+            startActivity(detailIntent);
             return true;
         }
 
@@ -191,5 +199,15 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             return null;
         }
+    }
+
+    private void setSharedPreferences() {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("pref_server_url",PreferenceConstants.END_POINT_URL);
+        editor.putString("pref_eum_collector_url", PreferenceConstants.EUM_COLLECTOR_URL);
+        editor.putString("pref_eum_app_key", PreferenceConstants.EUM_APP_KEY);
+        editor.commit();
     }
 }

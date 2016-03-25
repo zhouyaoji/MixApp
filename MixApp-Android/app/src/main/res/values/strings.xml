@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MixApp-Android</string>
     <string name="action_settings">Settings</string>
+
+    <string name="pref_server_url">Server URL</string>
+    <string name="pref_eum_collector_url">EUM Collector URL</string>
+    <string name="pref_eum_app_key">EUM App Key</string>
 </resources>

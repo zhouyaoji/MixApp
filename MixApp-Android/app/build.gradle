@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.appdynamics.e2e.mixapp_android"
-        minSdkVersion 15
+        minSdkVersion 11
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -24,13 +24,14 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:preference-v7:23.2.1'
     compile 'com.android.support:design:23.2.1'
     compile 'com.appdynamics:appdynamics-runtime:4.+'
 }
 
 adeum { // this section added for AppDynamics
     account {
-        name 'e2e-demo-master'
-        licenseKey '1be847c2-d645-48cc-bca4-bc304ef6756b'
+        name ''
+        licenseKey ''
     }
 }
