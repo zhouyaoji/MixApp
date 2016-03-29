@@ -25,12 +25,12 @@ This project is composed by 7 containers.
 ./build.sh
 ```
 Provide path to below agents according to prompt:
-- Java App Server Agent (.zip)
-- Machine Agent (.zip)
-- PHP Agent (.tar.bz)
-- Apache WebServer Agent (.tar.gz)
+- Java App Server Agent (AppServerAgent-<ver>.zip)
+- Machine Agent (64bit-linux-<ver>.zip)
+- PHP Agent (x64-linux-<ver>.tar.bz)
+- Apache WebServer Agent (nativeWebServer-64bit-linux-<ver>.tar.gz)
 - Tomcat Jar (.tar.gz)
-- C++ Native SDK (tar.gz)
+- C++ Native SDK (nativeSDK-64bit-linux-<ver>.tar.gz)
 
 ## Run
 
@@ -59,6 +59,11 @@ To get Machine Agent logs, run:
 ./pull_machine_agent_logs.sh
 ```
 You'll get a folder "machine_agent_logs" that contains 6 zipped Machine Agent logs accordingly.
+
+## Tagging
+
+Use ./tagAll.sh to tag versions of local images, such as 4.2, 4.3.
+Use ./untagAll.sh to untag versions.
 
 ## Note:
 1. Right after build, Node.js container may not be reporting correctly. Stop and restart Node.js container will fix it.
