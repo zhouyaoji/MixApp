@@ -138,22 +138,22 @@ copyAgents
 echo; echo "Building MixApp containers"
 
 echo; echo "Building Python App..."
-(cd Python-App && docker build -t appdynamics/python-app .) || exit $?
+(cd Python-App && docker build -t appdynamics/mixapp-python .) || exit $?
 
 echo; echo "Building PHP App..."
-(cd PHP-App && docker build -t appdynamics/php-app .) || exit $?
+(cd PHP-App && docker build -t appdynamics/mixapp-php .) || exit $?
 
 echo; echo "Building Node App..."
-(cd Node-App && docker build -t appdynamics/nodejs-app .) || exit $?
+(cd Node-App && docker build -t appdynamics/mixapp-nodejs .) || exit $?
 
 echo; echo "Building the Java App..."
-(cd Java-App && docker build -t appdynamics/java-app .) || exit $?
+(cd Java-App && docker build -t appdynamics/mixapp-java .) || exit $?
 
 echo; echo "Building the C++ Container..."
-(cd Cpp-App && docker build -t appdynamics/cpp-app .) || exit $?
+(cd Cpp-App && docker build -t appdynamics/mixapp-cpp .) || exit $?
 
 echo; echo "Building the WebServer..."
-(cd WebServer && docker build -t appdynamics/webserver .) || exit $?
+(cd WebServer && docker build -t appdynamics/mixapp-webserver .) || exit $?
 
 echo; echo "Building the Load Gen Container..."
 (cd Load-Gen && docker build -t appdynamics/mixapp-load .) || exit $?
