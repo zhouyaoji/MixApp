@@ -28,12 +28,12 @@ cleanUp(){
 trap cleanUp EXIT
 
 promptForAgents(){
-  read -e -p "Enter path to App Server Agent (.zip): " APP_SERVER_AGENT_PATH
-  read -e -p "Enter path to Machine Agent (.zip): " MACHINE_AGENT_PATH
-  read -e -p "Enter path to PHP Agent (.tar.bz2): " PHP_AGENT_PATH
-  read -e -p "Enter path to WebServer Agent (.zip): " WEBSERVER_AGENT_PATH
+  read -e -p "Enter path to App Server Agent (AppServerAgent-<ver>.zip): " APP_SERVER_AGENT_PATH
+  read -e -p "Enter path to Machine Agent (64bit-linux-<ver>.zip): " MACHINE_AGENT_PATH
+  read -e -p "Enter path to PHP Agent (x64-linux-<ver>.tar.bz): " PHP_AGENT_PATH
+  read -e -p "Enter path to WebServer Agent (nativeWebServer-64bit-linux-<ver>.tar.gz): " WEBSERVER_AGENT_PATH
   read -e -p "Enter path of Tomcat (.tar.gz): " TOMCAT_PATH
-  read -e -p "Enter path of C++ Native SDK (.tar.gz): " CPP_AGENT_PATH
+  read -e -p "Enter path of C++ Native SDK (nativeSDK-64bit-linux-<ver>.tar.gz): " CPP_AGENT_PATH
 }
 
 copyAgents(){
