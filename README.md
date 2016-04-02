@@ -3,7 +3,7 @@
 Mixed language applications packaged in Docker containers. 
 
 ## Project Structure
-This project is composed by 7 containers.
+This project is composed by 8 containers.
 - Java-App
 - Node-App
 - PHP-App
@@ -11,6 +11,7 @@ This project is composed by 7 containers.
 - Cpp-App
 - LoadGenerator
 - WebServer
+- Angular-App
 
 ## Build
 
@@ -63,8 +64,20 @@ You'll get a folder "machine_agent_logs" that contains 6 zipped Machine Agent lo
 ## Tagging
 
 Use ./tagAll.sh to tag versions of local images, such as 4.2, 4.3.
+
 Use ./untagAll.sh to untag versions.
 
+## Angular App to test End User Experience
+
+To update RUM key and EUM Cloud, run
+```
+docker exec -it angular_app bash
+```
+Pass RUM Key value and EUM cloud url
+```
+update-rum-key.sh {RUM_KEY} {EUM_CLOUD_URL}
+```
+Go to your local_docker_host:3008 and see the buttons to test connections with different application containers.
 ## Note:
 1. Right after build, Node.js container may not be reporting correctly. Stop and restart Node.js container will fix it.
 2. If C++ container starts before Python and Nodejs, the other two containers won't report correctly. 

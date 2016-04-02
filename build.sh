@@ -158,6 +158,9 @@ echo; echo "Building the WebServer..."
 echo; echo "Building the Load Gen Container..."
 (cd Load-Gen && docker build -t appdynamics/mixapp-load .) || exit $?
 
+echo; echo "Building the Angular.js Container..."
+(cd Angular-App && docker build -t appdynamics/mixapp-angular .) || exit $?
+
 
 HOSTNAME=`hostname`
 

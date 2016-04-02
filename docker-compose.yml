@@ -46,6 +46,13 @@ services:
     ports:
       - "3004:80"
 
+  angular_app:
+    container_name: angular_app
+    hostname: HOST_NAME-angular_app
+    image: appdynamics/mixapp-angular
+    ports:
+      - "3008:8000"
+
   cpp_app:
     container_name: cpp_app
     hostname: HOST_NAME-cpp_app

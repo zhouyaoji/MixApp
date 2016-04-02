@@ -1,0 +1,18 @@
+{
+  "name": "mixapp-angular",
+  "version": "0.0.1",
+  "description": "Angular app for MixApp",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Jennifer Li",
+  "license": "BSD",
+  "dependencies" : {
+    "express": "~4.13.4",
+    "body-parser": "~1.4.3",
+    "method-override": "~2.1.1",
+    "request" : "*"
+  }
+}

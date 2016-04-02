@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MixApp Angular App</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <script>window['adrum-start-time'] = new Date().getTime();</script><script src="/adrum.js"></script>
+  <body ng-app="requestApp">
+
+    <div class="container" ng-controller="RequestController">
+      <div align="middle">
+        <h1>Mixapp - Angular</h1>
+        <h3>You have to have MixApp containers running to test HTTP requests</h3>
+
+        <div class="btn-group-vertical" role="group">
+
+          <button type="button" class="btn btn-default btn-lg" ng-click="callhttp()">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Test HTTP Connection
+          </button>
+
+          <button type="button" class="btn btn-default btn-lg" ng-click="calljava()">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Test Java Connection
+          </button>
+
+          <button type="button" class="btn btn-default btn-lg" ng-click="callphp()">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Test PHP Connection
+          </button>
+
+          <button type="button" class="btn btn-default btn-lg" ng-click="callpython()">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Test Python Connection
+          </button>
+
+          <button type="button" class="btn btn-default btn-lg" ng-click="callnode()">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Test Node.js Connection
+          </button>
+
+        </div>
+        <h3>{{ msg }}</h3>
+        <h4>{{ status }}</h4>
+        <p>{{ data }}</p>
+      </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+    <script src="js/adrum.js"></script>
+  </body>
+</html>
