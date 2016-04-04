@@ -1,0 +1,5 @@
+C:\Workspace\SampleApplications\SampleWeb\SampleWeb\bin\SampleWeb.dll.config
+C:\Workspace\SampleApplications\SampleWeb\SampleWeb\bin\SampleWeb.dll
+C:\Workspace\SampleApplications\SampleWeb\SampleWeb\bin\SampleWeb.pdb
+C:\Workspace\SampleApplications\SampleWeb\SampleWeb\obj\Release\SampleWeb.dll
+C:\Workspace\SampleApplications\SampleWeb\SampleWeb\obj\Release\SampleWeb.pdb

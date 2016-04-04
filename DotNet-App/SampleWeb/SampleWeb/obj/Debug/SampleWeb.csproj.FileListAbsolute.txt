@@ -1,0 +1,12 @@
+C:\Workspace\SampleApplications\SampleWeb\SampleWeb\bin\SampleWeb.dll.config
+C:\Workspace\SampleApplications\SampleWeb\SampleWeb\bin\SampleWeb.dll
+C:\Workspace\SampleApplications\SampleWeb\SampleWeb\bin\SampleWeb.pdb
+C:\Workspace\SampleApplications\SampleWeb\SampleWeb\obj\Debug\SampleWeb.dll
+C:\Workspace\SampleApplications\SampleWeb\SampleWeb\obj\Debug\SampleWeb.pdb
+C:\Workspace\SampleApplications\SampleWeb\SampleWeb\obj\Debug\SampleWeb.csprojResolveAssemblyReference.cache
+C:\SampleWeb\SampleWeb\bin\SampleWeb.dll.config
+C:\SampleWeb\SampleWeb\bin\SampleWeb.dll
+C:\SampleWeb\SampleWeb\bin\SampleWeb.pdb
+C:\SampleWeb\SampleWeb\obj\Debug\SampleWeb.csprojResolveAssemblyReference.cache
+C:\SampleWeb\SampleWeb\obj\Debug\SampleWeb.dll
+C:\SampleWeb\SampleWeb\obj\Debug\SampleWeb.pdb

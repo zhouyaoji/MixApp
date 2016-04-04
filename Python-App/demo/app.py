@@ -50,6 +50,12 @@ def crossnodejs():
     data = response.read()
     return "HTTP Request successful: URL:  " + response.geturl() + 'LENGTH  :' +  str(len(data))
 
+@app.route('/crossdotnet')
+def crossdotnet():
+    response = urllib2.urlopen('http://DOTNET_IP:DOTNET_PORT')
+    data = response.read()
+    return "HTTP Request successful: URL:  " + response.geturl() + 'LENGTH  :' +  str(len(data))
+
 @app.route('/wave/<whatever>')
 def response_time_wave(whatever):
     a = 0.2
