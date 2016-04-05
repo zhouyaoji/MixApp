@@ -38,7 +38,7 @@ RUN chmod 7777 -R ${NATIVE_HOME}
 ADD startup.sh /
 RUN chmod 744 /startup.sh
 
-# Run startup script and tail Apache error log
+# Run startup script
 CMD /startup.sh
 
 EXPOSE 80

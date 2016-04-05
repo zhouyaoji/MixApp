@@ -32,6 +32,7 @@ Provide path to below agents according to prompt:
 - Apache WebServer Agent (nativeWebServer-64bit-linux-<ver>.tar.gz)
 - Tomcat Jar (.tar.gz)
 - C++ Native SDK (nativeSDK-64bit-linux-<ver>.tar.gz)
+- EUM Java Script for Angular App (adrum.js) #You can download it from Getting Started or copy from controller User Experience tab
 
 ## Run
 
@@ -69,15 +70,11 @@ Use ./untagAll.sh to untag versions.
 
 ## Angular App to test End User Experience
 
-To update RUM key and EUM Cloud, run
+To update RUM key and EUM Cloud, pass RUM Key value and EUM cloud url (EUM Extension URL is optional)
 ```
-docker exec -it angular_app bash
+./update-rum-key.sh {RUM_KEY} {EUM_CLOUD_URL} {EXTENTION_URL}
 ```
-Pass RUM Key value and EUM cloud url
-```
-update-rum-key.sh {RUM_KEY} {EUM_CLOUD_URL}
-```
-Go to your local_docker_host:3008 and see the buttons to test connections with different application containers.
+Go to your local_docker_host:3008 and click the buttons to test connections with different application containers. You'll see sessions and load show up in Browser RUM in your controller.
 ## Note:
 1. Right after build, Node.js container may not be reporting correctly. Stop and restart Node.js container will fix it.
 2. If C++ container starts before Python and Nodejs, the other two containers won't report correctly. 
