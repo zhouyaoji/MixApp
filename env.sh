@@ -12,7 +12,7 @@ ACCESS_KEY=
 EVENT_ENDPOINT=
 
 # Set app variables
-APP_NAME=MixApp-Jennifer
+APP_NAME=MixApp
 TIER_NAME=Python-Tier
 NODE_NAME=Python-Node
 PHP_TIER_NAME=PHP-Tier
