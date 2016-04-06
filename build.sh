@@ -7,6 +7,7 @@ PHP_AGENT=PHPAgent.tar.bz2
 WEBSERVER_AGENT=webserver_agent.tar.gz
 CPP_AGENT=appdynamics-sdk-native.tar.gz
 TOMCAT=apache-tomcat.tar.gz
+ADRUM=adrum.js
 
 cleanUp(){
   # Delete agent distros from docker build dirs
@@ -16,6 +17,7 @@ cleanUp(){
   (cd Python-App && rm -f ${MACHINE_AGENT})
   (cd WebServer && rm -f ${MACHINE_AGENT} ${WEBSERVER_AGENT})
   (cd Cpp-App && rm -f ${CPP_AGENT} ${MACHINE_AGENT})
+  (cd Angular-App/mixapp-angular/client/js && rm -f ${ADRUM})
 
   # Remove dangling images left-over from build
   if [[ `docker images -q --filter "dangling=true"` ]]
@@ -34,6 +36,7 @@ promptForAgents(){
   read -e -p "Enter path to WebServer Agent (nativeWebServer-64bit-linux-<ver>.tar.gz): " WEBSERVER_AGENT_PATH
   read -e -p "Enter path of Tomcat (.tar.gz): " TOMCAT_PATH
   read -e -p "Enter path of C++ Native SDK (nativeSDK-64bit-linux-<ver>.tar.gz): " CPP_AGENT_PATH
+  read -e -p "Enter path of EUM Agent - Adrum (adrum-<ver>.js): " ADRUM_PATH
 }
 
 copyAgents(){
@@ -43,7 +46,8 @@ copyAgents(){
   Tomcat: ${TOMCAT_PATH} 
   Php Agent  ${PHP_AGENT_PATH}
   Web Server Agent: ${WEBSERVER_AGENT_PATH}
-  C++ Agent: ${CPP_AGENT_PATH}"  
+  C++ Agent: ${CPP_AGENT_PATH}
+  Adrum: ${ADRUM_PATH}"
     
   echo "Adding Machine Agent to build"
   cp ${MACHINE_AGENT_PATH} Java-App/${MACHINE_AGENT}
@@ -67,6 +71,9 @@ copyAgents(){
 
   echo "Adding C++ Native SDK path to build" 
   cp ${CPP_AGENT_PATH} Cpp-App/${CPP_AGENT} 
+
+  echo "Adding adrum.js to Angular App" 
+  cp ${ADRUM_PATH} Angular-App/mixapp-angular/client/js/${ADRUM} 
 }
 
 # Usage information
@@ -78,7 +85,8 @@ then
           -m <Path to Machine Agent>
           -p <Path to Php Agent>
           -t <Path to Tomcat>
-          -w <Path to Web Server Agent>"
+          -w <Path to Web Server Agent>
+          -r <Path to Adrum Agent>"
   echo "Prompt for agent locations: build.sh"
   exit 0
 fi
@@ -88,7 +96,7 @@ then
   promptForAgents
 else
   # Allow user to specify locations of Agent installers
-  while getopts "a:c:m:p:t:w:" opt; do
+  while getopts "a:c:m:p:t:w:r:" opt; do
     case $opt in
       a)
         APP_SERVER_AGENT_PATH=$OPTARG
@@ -103,27 +111,33 @@ else
         fi
         ;; 
       m)
-        export MACHINE_AGENT_PATH=$OPTARG
+        MACHINE_AGENT_PATH=$OPTARG
         if [ ! -e ${MACHINE_AGENT_PATH} ]; then
           echo "Not found: ${MACHINE_AGENT_PATH}"; exit 1
         fi
         ;;
       p)
-        export PHP_AGENT_PATH=$OPTARG 
-	if [ ! -e ${PHP_AGENT_PATH} ]; then
+        PHP_AGENT_PATH=$OPTARG 
+	      if [ ! -e ${PHP_AGENT_PATH} ]; then
           echo "Not found: ${PHP_AGENT_PATH}"; exit 1        
         fi
         ;;
       t)
-        export TOMCAT_PATH=$OPTARG 
-	if [ ! -e ${TOMCAT_PATH} ]; then
+        TOMCAT_PATH=$OPTARG 
+	      if [ ! -e ${TOMCAT_PATH} ]; then
           echo "Not found: ${TOMCAT_PATH}"; exit 1        
         fi
         ;;
       w)
-        export WEBSERVER_AGENT_PATH=$OPTARG
+        WEBSERVER_AGENT_PATH=$OPTARG
         if [ ! -e ${WEBSERVER_AGENT_PATH} ]; then
           echo "Not found: ${WEBSERVER_AGENT_PATH}"; exit 1
+        fi
+        ;;
+      r)
+        ADRUM_PATH=$OPTARG
+        if [ ! -e ${ADRUM_PATH} ]; then
+          echo "Not found: ${ADRUM_PATH}"; exit 1
         fi
         ;;
       \?)
