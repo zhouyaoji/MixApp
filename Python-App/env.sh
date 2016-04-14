@@ -40,10 +40,6 @@ if [ -z "${ACCESS_KEY}" ]; then
         export ACCESS_KEY="your-account-access-key";
 fi
 
-if [ -z "${PY_AGENT_VERSION}" ]; then
-        export PY_AGENT_VERSION="\<4.2";
-fi
-
 # Required to start Machine Agent
 export MACHINE_AGENT_HOME=/machine-agent
 export JAVA_OPTS="-Xmx512m -XX:MaxPermSize=256m"

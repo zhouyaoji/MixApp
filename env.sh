@@ -25,10 +25,3 @@ CPP_TIER_NAME=Cplusplus-Tier
 CPP_NODE_NAME=Cplusplus-Node
 WEB_TIER_NAME=Web-Tier
 WEB_NODE_NAME=Apache
-
-# Set WebServer sub URL & Destination Node
-EXT_URL=/crossjava
-DEST_URL=http://java_app:8080
-
-# Set Python Agent verion
-PY_AGENT_VERSION=4.2

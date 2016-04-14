@@ -5,7 +5,6 @@ MAINTAINER Jennifer Li (jennifer.li@appdynamics.com)
 # Add native SDK
 ENV SDK_HOME /opt
 ENV NATIVE_HOME ${SDK_HOME}/appdynamics-sdk-native
-ADD 02-appd.conf ${SDK_HOME}/
 
 # Set up C++ native SDK
 ADD appdynamics-sdk-native.tar.gz ${SDK_HOME}

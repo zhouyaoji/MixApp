@@ -11,9 +11,15 @@ source /appd/env.sh && sed -i "/^accesskey/c\accesskey = ${ACCESS_KEY}" /appd/Py
 source /appd/env.sh && sed -i "/^app/c\app = ${APP_NAME}" /appd/Python-App/appdynamics.cfg
 source /appd/env.sh && sed -i "/^tier/c\tier = ${TIER_NAME}" /appd/Python-App/appdynamics.cfg
 source /appd/env.sh && sed -i "/^node/c\node = ${APP_NAME}-${NODE_NAME}" /appd/Python-App/appdynamics.cfg
-source /appd/env.sh && sed -i "s/version/${PY_AGENT_VERSION}/g" /appd/Python-App/start.sh
 sed -i 's/localhost/python_mysql/g' /appd/Python-App/demo/config.py
 sed -i 's/127.0.0.1/python_postgres/g' /appd/Python-App/demo/config.py
+
+
+# Setup virtualenv
+/usr/local/bin/virtualenv /appd/Python-App/env
+source /appd/Python-App/env/bin/activate
+/appd/Python-App/env/bin/pip install --pre appdynamics
+/appd/Python-App/env/bin/pip install -r /appd/Python-App/requirements.txt
 
 # Start services
 source /appd/Python-App/start.sh
