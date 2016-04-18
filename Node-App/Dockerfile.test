@@ -1,0 +1,44 @@
+FROM appdynamics/mixapp-base:node
+
+MAINTAINER Jennifer Li (jennifer.li@appdynamics.com)
+
+# Add app source
+RUN mkdir /node-todo
+ADD /node-todo /node-todo
+
+# Install app dependencies
+RUN cd /node-todo && npm install express
+RUN cd /node-todo && npm install request
+RUN cd /node-todo && npm install mongodb
+RUN cd /node-todo && npm install mongoose
+RUN cd /node-todo && npm install socket.io
+
+# Install Node.js Agent
+RUN cd /node-todo && npm install appdynamics-nodejs-standalone-npm.tgz
+
+# Machine Agent
+ADD MachineAgent.zip /
+RUN unzip -q /MachineAgent.zip -d /machine-agent;rm MachineAgent.zip
+
+ADD runMachineAgent.sh /
+RUN chmod +x /runMachineAgent.sh
+
+# Analytics within Machine Agent
+ADD configAnalytics.sh /
+RUN chmod +x /configAnalytics.sh
+
+# Install and start mongo
+ADD /mongodb-org-3.0.repo /etc/yum.repos.d/
+RUN yum install -y mongodb-org
+
+# Set envrironment variable
+COPY /env.sh /
+RUN chmod 777 /env.sh
+COPY /start.sh /
+RUN chmod 777 /start.sh
+
+# Expose Ports
+EXPOSE  3000
+
+# Set environment variable and start the App
+CMD /start.sh 

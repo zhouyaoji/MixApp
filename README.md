@@ -33,6 +33,7 @@ Provide path to below agents according to prompt:
 - Tomcat Jar (.tar.gz)
 - C++ Native SDK (nativeSDK-64bit-linux-<ver>.tar.gz)
 - EUM Java Script for Angular App (adrum.js) #You can download it from Getting Started or copy from controller User Experience tab
+- [OPTIONAL] Node.js Agent # Default is appdynamics@next, you can pass in Node.js agent for testing
 
 ## Run
 

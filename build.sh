@@ -8,6 +8,7 @@ WEBSERVER_AGENT=webserver_agent.tar.gz
 CPP_AGENT=appdynamics-sdk-native.tar.gz
 TOMCAT=apache-tomcat.tar.gz
 ADRUM=adrum.js
+NODEJS_AGENT=appdynamics-nodejs-standalone-npm.tgz
 
 cleanUp(){
   # Delete agent distros from docker build dirs
@@ -18,7 +19,7 @@ cleanUp(){
   (cd WebServer && rm -f ${MACHINE_AGENT} ${WEBSERVER_AGENT})
   (cd Cpp-App && rm -f ${CPP_AGENT} ${MACHINE_AGENT})
   (cd Angular-App/mixapp-angular/client/js && rm -f ${ADRUM})
-
+  (cd Node-App/node-todo && rm -f ${NODEJS_AGENT})
   # Remove dangling images left-over from build
   if [[ `docker images -q --filter "dangling=true"` ]]
   then
@@ -37,6 +38,8 @@ promptForAgents(){
   read -e -p "Enter path of Tomcat (.tar.gz): " TOMCAT_PATH
   read -e -p "Enter path of C++ Native SDK (nativeSDK-64bit-linux-<ver>.tar.gz): " CPP_AGENT_PATH
   read -e -p "Enter path of EUM Agent - Adrum (adrum-<ver>.js): " ADRUM_PATH
+  echo "OPTIONAL Press Enter to install default"
+  read -e -p "Enter path of Node.js Agent (appdynamics-nodejs-standalone-npm-<ver>.tgz): " NODEJS_PATH
 }
 
 copyAgents(){
@@ -47,7 +50,8 @@ copyAgents(){
   Php Agent  ${PHP_AGENT_PATH}
   Web Server Agent: ${WEBSERVER_AGENT_PATH}
   C++ Agent: ${CPP_AGENT_PATH}
-  Adrum: ${ADRUM_PATH}"
+  Adrum: ${ADRUM_PATH}
+  [Optional] Node.js: ${NODEJS_PATH}"
     
   echo "Adding Machine Agent to build"
   cp ${MACHINE_AGENT_PATH} Java-App/${MACHINE_AGENT}
@@ -74,6 +78,11 @@ copyAgents(){
 
   echo "Adding adrum.js to Angular App" 
   cp ${ADRUM_PATH} Angular-App/mixapp-angular/client/js/${ADRUM} 
+
+  if [ ! -z ${NODEJS_PATH} ]; then
+    echo "Adding Node.js agent to Node.js App" 
+    cp ${NODEJS_PATH} Node-App/node-todo/${NODEJS_AGENT}
+  fi
 }
 
 # Usage information
@@ -86,7 +95,8 @@ then
           -p <Path to Php Agent>
           -t <Path to Tomcat>
           -w <Path to Web Server Agent>
-          -r <Path to Adrum Agent>"
+          -r <Path to Adrum Agent>
+          -n [<Path to Node.js Agent>] (Optional)"
   echo "Prompt for agent locations: build.sh"
   exit 0
 fi
@@ -96,7 +106,7 @@ then
   promptForAgents
 else
   # Allow user to specify locations of Agent installers
-  while getopts "a:c:m:p:t:w:r:" opt; do
+  while getopts "a:c:m:p:t:w:r:n:" opt; do
     case $opt in
       a)
         APP_SERVER_AGENT_PATH=$OPTARG
@@ -140,6 +150,10 @@ else
           echo "Not found: ${ADRUM_PATH}"; exit 1
         fi
         ;;
+      n)
+        NODEJS_PATH=$OPTARG
+          echo "Building with: ${NODE_PATH}";
+        ;;
       \?)
         echo "Invalid option: -$OPTARG"
         ;;
@@ -158,7 +172,12 @@ echo; echo "Building PHP App..."
 (cd PHP-App && docker build -t appdynamics/mixapp-php .) || exit $?
 
 echo; echo "Building Node App..."
-(cd Node-App && docker build -t appdynamics/mixapp-nodejs .) || exit $?
+  if [ ! -z ${NODEJS_PATH} ]; then
+    echo "Build with agent: ${NODEJS_PATH}" 
+    (cd Node-App && docker build -f Dockerfile.test -t appdynamics/mixapp-nodejs .) || exit $?
+  else
+    (cd Node-App && docker build -t appdynamics/mixapp-nodejs .) || exit $?
+  fi
 
 echo; echo "Building the Java App..."
 (cd Java-App && docker build -t appdynamics/mixapp-java .) || exit $?
