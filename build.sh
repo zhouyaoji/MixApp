@@ -24,7 +24,7 @@ cleanUp(){
   (cd Python-App && rm -rf ${PYTHON_AGENT})
 
   # Remove dangling images left-over from build
-  if [ `docker images -q --filter "dangling=true"` ]
+  if [[ `docker images -q --filter "dangling=true"` ]]
   then
     echo
     echo "Deleting intermediate containers..."
