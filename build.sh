@@ -9,6 +9,7 @@ CPP_AGENT=appdynamics-sdk-native.tar.gz
 TOMCAT=apache-tomcat.tar.gz
 ADRUM=adrum.js
 NODEJS_AGENT=appdynamics-nodejs-standalone-npm.tgz
+PYTHON_AGENT=appdynamics-python-agent
 
 cleanUp(){
   # Delete agent distros from docker build dirs
@@ -20,8 +21,10 @@ cleanUp(){
   (cd Cpp-App && rm -f ${CPP_AGENT} ${MACHINE_AGENT})
   (cd Angular-App/mixapp-angular/client/js && rm -f ${ADRUM})
   (cd Node-App/node-todo && rm -f ${NODEJS_AGENT})
+  (cd Python-App && rm -rf ${PYTHON_AGENT})
+
   # Remove dangling images left-over from build
-  if [[ `docker images -q --filter "dangling=true"` ]]
+  if [ `docker images -q --filter "dangling=true"` ]
   then
     echo
     echo "Deleting intermediate containers..."
@@ -40,6 +43,7 @@ promptForAgents(){
   read -e -p "Enter path of EUM Agent - Adrum (adrum-<ver>.js): " ADRUM_PATH
   echo "OPTIONAL Press Enter to install default"
   read -e -p "Enter path of Node.js Agent (appdynamics-nodejs-standalone-npm-<ver>.tgz): " NODEJS_PATH
+  read -e -p "Enter path of Python Agent Directory (appdynamics-python-agent/): " PYTHON_AGENT_PATH
 }
 
 copyAgents(){
@@ -51,7 +55,8 @@ copyAgents(){
   Web Server Agent: ${WEBSERVER_AGENT_PATH}
   C++ Agent: ${CPP_AGENT_PATH}
   Adrum: ${ADRUM_PATH}
-  [Optional] Node.js: ${NODEJS_PATH}"
+  [Optional] Node.js: ${NODEJS_PATH}
+  [Optional, 2 .whl files required] Python: ${PYTHON_AGENT_PATH}"
     
   echo "Adding Machine Agent to build"
   cp ${MACHINE_AGENT_PATH} Java-App/${MACHINE_AGENT}
@@ -83,10 +88,16 @@ copyAgents(){
     echo "Adding Node.js agent to Node.js App" 
     cp ${NODEJS_PATH} Node-App/node-todo/${NODEJS_AGENT}
   fi
+
+  if [ ! -z ${PYTHON_AGENT_PATH} ]; then
+    echo "Adding Python agent to Python App" 
+    mkdir Python-App/${PYTHON_AGENT}
+    cp ${PYTHON_AGENT_PATH}/* Python-App/${PYTHON_AGENT}/
+  fi
 }
 
 # Usage information
-if [[ $1 == *--help* ]]
+if [ $1 == *--help* ]
 then
   echo "Specify agent locations: build.sh
           -a <Path to App Server Agent>
@@ -96,7 +107,8 @@ then
           -t <Path to Tomcat>
           -w <Path to Web Server Agent>
           -r <Path to Adrum Agent>
-          -n [<Path to Node.js Agent>] (Optional)"
+          -n [<Path to Node.js Agent>] (Optional)
+          -y [<Path to Python Agent Directory>] (Optional, 2 .whl files required)"
   echo "Prompt for agent locations: build.sh"
   exit 0
 fi
@@ -106,7 +118,7 @@ then
   promptForAgents
 else
   # Allow user to specify locations of Agent installers
-  while getopts "a:c:m:p:t:w:r:n:" opt; do
+  while getopts "a:c:m:p:t:w:r:n:e:y:" opt; do
     case $opt in
       a)
         APP_SERVER_AGENT_PATH=$OPTARG
@@ -154,6 +166,10 @@ else
         NODEJS_PATH=$OPTARG
           echo "Building with: ${NODE_PATH}";
         ;;
+      y)
+        PYTHON_AGENT_PATH=$OPTARG
+          echo "Building with: ${PYTHON_AGENT_PATH}";
+        ;;
       \?)
         echo "Invalid option: -$OPTARG"
         ;;
@@ -166,7 +182,12 @@ copyAgents
 echo; echo "Building MixApp containers"
 
 echo; echo "Building Python App..."
-(cd Python-App && docker build -t appdynamics/mixapp-python .) || exit $?
+  if [ ! -z ${PYTHON_AGENT_PATH} ]; then
+    echo "Build with agent: ${PYTHON_AGENT_PATH}"
+    (cd Python-App && docker build -f Dockerfile.test -t appdynamics/mixapp-python .) || exit $?
+  else
+    (cd Python-App && docker build -t appdynamics/mixapp-python .) || exit $?
+  fi
 
 echo; echo "Building PHP App..."
 (cd PHP-App && docker build -t appdynamics/mixapp-php .) || exit $?

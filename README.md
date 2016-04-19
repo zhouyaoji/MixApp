@@ -34,6 +34,7 @@ Provide path to below agents according to prompt:
 - C++ Native SDK (nativeSDK-64bit-linux-<ver>.tar.gz)
 - EUM Java Script for Angular App (adrum.js) #You can download it from Getting Started or copy from controller User Experience tab
 - [OPTIONAL] Node.js Agent # Default is appdynamics@next, you can pass in Node.js agent for testing
+- [OPTIONAL] Python Agent # Default is -pre appdynamics, you can pass in Python agent directory (contains bindeps.whl and agent.whl) for testing
 
 ## Run
 
