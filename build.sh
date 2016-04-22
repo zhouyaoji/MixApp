@@ -97,7 +97,7 @@ copyAgents(){
 }
 
 # Usage information
-if [ $1 == *--help* ]
+if [[ $1 == *--help* ]]
 then
   echo "Specify agent locations: build.sh
           -a <Path to App Server Agent>
