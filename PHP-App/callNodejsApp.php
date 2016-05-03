@@ -1,18 +1,21 @@
 <?php
-$service_url = 'http://nodejs_app:3000/';
-$curl = curl_init($service_url);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-$curl_response = curl_exec($curl);
-if ($curl_response === false) {
-    $info = curl_getinfo($curl);
-    curl_close($curl);
-    die('error occured during curl exec. Additioanl info: ' . var_export($info));
-}
-curl_close($curl);
-$decoded = json_decode($curl_response);
-if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
-    die('error occured: ' . $decoded->response->errormessage);
+function downloadURL($URL) {
+ if(!function_exists('curl_init')) {
+ die ("Curl PHP package not installedn");
+ }
+
+ /*Initializing CURL*/
+ $curlHandle = curl_init();
+
+ /*The URL to be downloaded is set*/
+ curl_setopt($curlHandle, CURLOPT_URL, $URL);
+ /*Return the HTTP headers*/
+ curl_setopt($curlHandle, CURLOPT_HEADER, true);
+ curl_setopt($curlHandle, CURLOPT_NOBODY, true);
+ /*Now execute the CURL, download the URL specified*/
+ $response = curl_exec($curlHandle);
+ return curl_getinfo($curlHandle);
 }
 
-echo $curl_response;
+echo downloadURL("http://nodejs_app:3000/");
 ?>
