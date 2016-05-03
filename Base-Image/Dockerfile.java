@@ -13,3 +13,7 @@ RUN echo "oracle-java7-installer shared/accepted-oracle-license-v1-1 boolean tru
 
 RUN apt-get -y install oracle-java7-installer
 
+# Install Maven
+RUN apt-get -y install maven
+RUN mvn install -DskipTests
+RUN mvn -version

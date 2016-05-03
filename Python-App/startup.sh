@@ -14,7 +14,6 @@ source /appd/env.sh && sed -i "/^node/c\node = ${APP_NAME}-${NODE_NAME}" /appd/P
 sed -i 's/localhost/python_mysql/g' /appd/Python-App/demo/config.py
 sed -i 's/127.0.0.1/python_postgres/g' /appd/Python-App/demo/config.py
 
-
 # Setup virtualenv
 /usr/local/bin/virtualenv /appd/Python-App/env
 source /appd/Python-App/env/bin/activate

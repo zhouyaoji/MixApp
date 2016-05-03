@@ -1,6 +1,6 @@
 FROM appdynamics/mixapp-base:java
 
-RUN apt-get -y install oracle-java7-installer
+MAINTAINER Jennifer Li (jennifer.li@appdynamics.com)
 
 # Environment vars: Tomcat
 ENV CATALINA_HOME /tomcat
@@ -31,7 +31,10 @@ RUN chmod +x /runMachineAgent.sh
 ADD configAnalytics.sh /
 RUN chmod +x /configAnalytics.sh
 
-ADD TechStack.war ${CATALINA_HOME}/webapps/
+# ADD TechStack.war ${CATALINA_HOME}/webapps/
+ADD SimpleJava/ /SimpleJava
+RUN cd /SimpleJava && mvn package -Dmaven.test.skip=true
+RUN cp /SimpleJava/target/SimpleJava.war ${CATALINA_HOME}/webapps/
 
 # Startup scripts
 ADD startup.sh /

@@ -1,7 +1,30 @@
-FROM appdynamics/python-base
+FROM centos:centos6
 
 MAINTAINER Jennifer Li (jennifer.li@appdynamics.com)
 
-# Install Java
-RUN apt-get update
-RUN apt-get -y install default-jdk
+# Install tools
+RUN python --version
+RUN yum -y update
+RUN yum install -y wget
+RUN yum install -y vim
+RUN yum install -y tar
+RUN yum install -y java-1.7.0-openjdk-devel
+RUN yum install -y centos-release-SCL
+RUN yum install -y epel-release
+
+# Install python 2.7 (Centos has python 2.6.6 by default which is deprecated)
+RUN yum groupinstall -y "Development tools"
+RUN yum install -y zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel
+RUN wget --no-check-certificate https://www.python.org/ftp/python/2.7.6/Python-2.7.6.tar.xz
+RUN tar xf Python-2.7.6.tar.xz 
+RUN cd Python-2.7.6 && ./configure --prefix=/usr/local && make && make altinstall
+RUN /usr/local/bin/python2.7 --version
+
+# Install updated setuptools and pip
+RUN wget --no-check-certificate https://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz
+RUN tar -xvf setuptools-1.4.2.tar.gz
+RUN cd setuptools-1.4.2 && /usr/local/bin/python2.7 setup.py install
+RUN /usr/local/bin/easy_install-2.7 pip virtualenv
+
+# Install postgresql
+RUN yum install -y python-devel postgresql-devel

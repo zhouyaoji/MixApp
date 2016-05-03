@@ -4,7 +4,6 @@ MAINTAINER Jennifer Li (jennifer.li@appdynamics.com)
 
 # Install app
 ADD . /appd/Python-App
-RUN chown -R appdynamics.appdynamics /appd
 
 # Build startup script 
 ADD /build_startup_script.sh /appd/
@@ -17,7 +16,6 @@ ADD /env.sh /appd/
 RUN chmod 777 /appd/env.sh
 ADD /start.sh /appd/Python-App/
 RUN chmod 777 /appd/Python-App/start.sh
-RUN chown -R appdynamics.appdynamics /appd
 
 # Install -pre python agent
 RUN ./appd/build_startup_script.sh
