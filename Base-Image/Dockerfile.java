@@ -15,5 +15,4 @@ RUN apt-get -y install oracle-java7-installer
 
 # Install Maven
 RUN apt-get -y install maven
-RUN mvn install -DskipTests
 RUN mvn -version

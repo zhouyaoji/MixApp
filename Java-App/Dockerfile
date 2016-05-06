@@ -33,7 +33,7 @@ RUN chmod +x /configAnalytics.sh
 
 # ADD TechStack.war ${CATALINA_HOME}/webapps/
 ADD SimpleJava/ /SimpleJava
-RUN cd /SimpleJava && mvn package -Dmaven.test.skip=true
+RUN cd /SimpleJava && mvn install && mvn package -Dmaven.test.skip=true
 RUN cp /SimpleJava/target/SimpleJava.war ${CATALINA_HOME}/webapps/
 
 # Startup scripts
