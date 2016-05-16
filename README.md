@@ -57,12 +57,6 @@ You need to install the following:
 
 ## Build the Docker Images and Agents
 
-1. Build the base images:
-
-    ```bash
-    ./Base-Image/build.sh
-    ```
-
 1. Provide values for the variables listed below in `env.sh`:
 
     * `CONTROLLER` - assign the URL to the controller. 
@@ -73,11 +67,17 @@ You need to install the following:
     * `ACCESS_KEY` - The access key provisioned for you. For example: `5e41285e-23ed-407e-bf77-aa05f53f89a8`
     * `APP_NAME` - The application name. The default is `MixApp`, but we recommend appending a username to help identify your application, such as `AppName-janedoe`.
 
-1. Build the Python app and add the MachineAgent:
-
-    ```bash
-    ./build.sh
+1. There are two ways to build the containers:
+    
+    * Simply run and follow instructions:
     ```
+    ./build.sh 
+    ```
+    You will be prompt with command line instruction to provide agents directory or enter each agent one by one.s
+    * Run with agents directory:
+    ```
+    ./build.sh -d <absolute-path-to-agent-directory>
+
 
 ## Run MixApp
 
