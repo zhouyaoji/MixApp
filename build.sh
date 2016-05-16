@@ -108,31 +108,31 @@ findAgents(){
 }
 
 checkAgents(){
-  if [ ! -e ${APP_SERVER_AGENT_PATH} ]; then
+  if [[ -z ${APP_SERVER_AGENT_PATH} ]]; then
     echo "App Server Agent not found."; exit 1
   fi
-  if [ ! -e ${CPP_AGENT_PATH} ]; then
+  if [[ -z ${CPP_AGENT_PATH} ]]; then
     echo "C++ Agent not found."; exit 1
   fi
-  if [ ! -e ${MACHINE_AGENT_PATH} ]; then
+  if [[ -z ${MACHINE_AGENT_PATH} ]]; then
     echo "Machine Agent not found."; exit 1
   fi
-  if [ ! -e ${PHP_AGENT_PATH} ]; then
+  if [[ -z ${PHP_AGENT_PATH} ]]; then
     echo "PHP Agent not found."; exit 1        
   fi
-  if [ ! -e ${TOMCAT_PATH} ]; then
+  if [[ -z ${TOMCAT_PATH} ]]; then
     echo "Tomcat not found.";
-    read -p "Do you want to download Tomcat?" yn
+    read -p "Do you want to download Tomcat? (y or n)" yn
     case $yn in
-        [Yy]* ) wget http://download.nextag.com/apache/tomcat/tomcat-8/v8.0.33/bin/apache-tomcat-8.0.33.tar.gz; break;;
-        [Nn]* ) exit;;
+        [Yy]* ) curl -o $AGENT_DIR/apache-tomcat-8.0.33.tar.gz http://www-us.apache.org/dist/tomcat/tomcat-8/v8.0.33/bin/apache-tomcat-8.0.33.tar.gz; TOMCAT_PATH=$AGENT_DIR/apache-tomcat-8.0.33.tar.gz ;;
+        [Nn]* ) exit 1;;
         * ) echo "Please answer y or n.";;
     esac      
   fi
-  if [ ! -e ${WEBSERVER_AGENT_PATH} ]; then
+  if [[ -z ${WEBSERVER_AGENT_PATH} ]]; then
     echo "WebServer Agent not found."; exit 1
   fi
-  if [ ! -e ${ADRUM_PATH} ]; then
+  if [[ -z ${ADRUM_PATH} ]]; then
     echo "Adrum.js not found."; exit 1
   fi
 }
@@ -312,7 +312,10 @@ fi
 if [[ $1 == *-d* ]]
 then
   AGENT_DIR=$2
-  findAgents;
+  findAgents
+  if [[ findAgents -eq 0 ]]
+    then promptForAgents
+  fi
 fi
 
 # Prompt command for user to specify each agent's path
@@ -322,6 +325,9 @@ if [ "$#" -eq 0 ]
   (press [ENTER] if you want to provide agent paths one by one)
   Please provide absolute path: " AGENT_DIR
   findAgents
+  if [[ findAgents -eq 0 ]]
+    then promptForAgents
+  fi
   if [ -z $AGENT_DIR ]; then
     promptForAgents
   fi
