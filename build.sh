@@ -11,6 +11,20 @@ ADRUM=adrum.js
 NODEJS_AGENT=appdynamics-nodejs-standalone-npm.tgz
 PYTHON_AGENT=appdynamics-python-agent
 
+#MACHINE_AGENT=Agents/MachineAgent-4.2.1.8.zip
+#APP_SERVER_AGENT=Agents/AppServerAgent-ibm-4.2.1.8.zip
+#PHP_AGENT=Agents/appdynamics-php-agent-x64-linux-4.2.1.8.tar.bz2
+#WEBSERVER_AGENT=Agents/appdynamics-sdk-native-nativeWebServer-64bit-linux-4.2.1.8.tar.gz
+#CPP_AGENT=Agents/appdynamics-sdk-native-64bit-linux-4.2.1.8.tar.gz
+#TOMCAT=Agents/apache-tomcat-8.0.33.tar.gz
+
+#MACHINE_AGENT=Agents/MachineAgent-4.2.1.8.zip
+#APP_SERVER_AGENT=Agents/AppServerAgent-ibm-4.2.1.8.zip
+#PHP_AGENT=Agents/appdynamics-php-agent-x64-linux-4.2.1.8.tar.bz2
+#WEBSERVER_AGENT=Agents/appdynamics-sdk-native-nativeWebServer-64bit-linux-4.2.1.8.tar.gz
+#CPP_AGENT=Agents/appdynamics-sdk-native-64bit-linux-4.2.1.8.tar.gz
+#TOMCAT=Agents/apache-tomcat-8.0.33.tar.gz
+
 cleanUp(){
   # Delete agent distros from docker build dirs
   (cd Java-App && rm -f ${APP_SERVER_AGENT} ${MACHINE_AGENT} ${TOMCAT})
@@ -45,6 +59,97 @@ promptForAgents(){
   read -e -p "Enter path of Node.js Agent (appdynamics-nodejs-standalone-npm-<ver>.tgz): " NODEJS_PATH
   read -e -p "Enter path of Python Agent Directory (appdynamics-python-agent/): " PYTHON_AGENT_PATH
 }
+# Searches for the agents in the 'Agents' directory
+# and assigns the path to variables for later use.
+findAgents(){
+  agentDir=$(pwd)/Agents
+  # Confirm the Agents directory exists.
+  if [ ! -d "$agentDir" ]; then
+    echo "The Agents directory doesn't exist. We'll prompt you for the agents."
+    return 0 
+  fi
+  # It exists, so let's find the agents and save their location.
+  for f in $(ls $agentDir); do
+    case $f in
+      MachineAgent*.zip)                          
+        MACHINE_AGENT_PATH=$agentDir/$f   
+        ;;
+      AppServer*.zip)                             
+        APP_SERVER_AGENT_PATH=$agentDir/$f 
+        ;;
+      appdynamics-php-agent*.bz2)                 
+        PHP_AGENT_PATH=$agentDir/$f    
+        ;;
+      appdynamics-sdk-native-nativeWebServer*.gz) 
+        WEBSERVER_AGENT_PATH=$agentDir/$f 
+        ;;
+      apache-tomcat*.gz)                          
+        TOMCAT_PATH=$agentDir/$f 
+        ;;
+      appdynamics-sdk-native*.gz)                 
+        CPP_AGENT_PATH=$agentDir/$f 
+        ;;
+      adrum.js)                                   
+        ADRUM_PATH=$agentDir/$f 
+        ;;
+      *)           
+        ;;
+    esac
+  done
+  if [[ -z "${APP_SERVER_AGENT_PATH}" || -z "${PHP_AGENT_PATH}" || -z "${WEBSERVER_AGENT_PATH}" || -z "${TOMCAT_PATH}" || -z "${CPP_AGENT_PATH}" || -z "${ADRUM_PATH}" || -z "${MACHINE_AGENT_PATH}" ]];
+    then
+    echo "You were missing one of the agents in the 'Agents' directory. We're going to have to ask you to manually provide the path to each agent."
+    return 0 
+  else
+    return 1 
+  fi
+}
+
+# Searches for the agents in the 'Agents' directory
+# and assigns the path to variables for later use.
+findAgents(){
+  agentDir=$(pwd)/Agents
+  # Confirm the Agents directory exists.
+  if [ ! -d "$agentDir" ]; then
+    echo "The Agents directory doesn't exist. We'll prompt you for the agents."
+    return 0 
+  fi
+  # It exists, so let's find the agents and save their location.
+  for f in $(ls $agentDir); do
+    case $f in
+      MachineAgent*.zip)                          
+        MACHINE_AGENT_PATH=$agentDir/$f   
+        ;;
+      AppServer*.zip)                             
+        APP_SERVER_AGENT_PATH=$agentDir/$f 
+        ;;
+      appdynamics-php-agent*.bz2)                 
+        PHP_AGENT_PATH=$agentDir/$f    
+        ;;
+      appdynamics-sdk-native-nativeWebServer*.gz) 
+        WEBSERVER_AGENT_PATH=$agentDir/$f 
+        ;;
+      apache-tomcat*.gz)                          
+        TOMCAT_PATH=$agentDir/$f 
+        ;;
+      appdynamics-sdk-native*.gz)                 
+        CPP_AGENT_PATH=$agentDir/$f 
+        ;;
+      adrum.js)                                   
+        ADRUM_PATH=$agentDir/$f 
+        ;;
+      *)           
+        ;;
+    esac
+  done
+  if [[ -z "${APP_SERVER_AGENT_PATH}" || -z "${PHP_AGENT_PATH}" || -z "${WEBSERVER_AGENT_PATH}" || -z "${TOMCAT_PATH}" || -z "${CPP_AGENT_PATH}" || -z "${ADRUM_PATH}" || -z "${MACHINE_AGENT_PATH}" ]];
+    then
+    echo "You were missing one of the agents in the 'Agents' directory. We're going to have to ask you to manually provide the path to each agent."
+    return 0 
+  else
+    return 1 
+  fi
+}
 
 copyAgents(){
   echo "Adding AppDynamics Agents: 
@@ -66,9 +171,13 @@ copyAgents(){
   cp ${MACHINE_AGENT_PATH} WebServer/${MACHINE_AGENT}
   cp ${MACHINE_AGENT_PATH} Cpp-App/${MACHINE_AGENT}
 
+  echo ${APP_SERVER_AGENT_PATH}
+  echo "Whoa, dude!"
   echo "Adding App Server Agent to build"
   cp ${APP_SERVER_AGENT_PATH} Java-App/${APP_SERVER_AGENT}
 
+  echo ${PHP_AGENT_PATH}
+  echo "Whoa, dude again!"
   echo "Adding PHP Agent to build"
   cp ${PHP_AGENT_PATH} PHP-App/${PHP_AGENT}
 
@@ -112,8 +221,7 @@ then
   echo "Prompt for agent locations: build.sh"
   exit 0
 fi
-
-if  [ $# -eq 0 ]
+if  findAgents;
 then
   promptForAgents
 else

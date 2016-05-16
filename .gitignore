@@ -1,12 +1,16 @@
 .DS_Store
+.*swp
 
 # Ignore agents
 *MachineAgent.zip
 *JavaAgent.zip
 *PHPAgent.zip
+*bz2
+*js
 
 # Ignore logs
 *_logs.zip
+machine_agent_logs/
 
 # Ignore personal environment variables
 env*.sh
