@@ -90,6 +90,12 @@ findAgents(){
       appdynamics-sdk-native*.gz)                 
         CPP_AGENT_PATH=$AGENT_DIR/$f 
         ;;
+      appdynamics-nodejs-standalone*.tgz)
+        NODEJS_PATH=$AGENT_DIR/$f
+        ;;
+      appdynamics-python-agent*)
+        PYTHON_AGENT_PATH=$AGENT_DIR/$f
+        ;;
       adrum*.js)                                   
         ADRUM_PATH=$AGENT_DIR/$f 
         ;;
@@ -325,7 +331,7 @@ if [ "$#" -eq 0 ]
   (press [ENTER] if you want to provide agent paths one by one)
   Please provide absolute path: " AGENT_DIR
   findAgents
-  if [[ findAgents -eq 0 ]]
+  if [[ findAgents -eq 1 ]]
     then promptForAgents
   fi
   if [ -z $AGENT_DIR ]; then

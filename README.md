@@ -81,11 +81,20 @@ You need to install the following:
 
 ## Run MixApp
 
-To run MixApp:
+To run a full version of MixApp:
 
-```bash
+```
 docker-compose up -d
 ```
+
+To run a subset containers (one or several) of MixApp, specify the container you want to run in command:
+
+```
+./custom_start.sh [java] [nodejs] [python] [php] [webserver] [angular] [cpp]
+```
+Or simply run "./custom_start.sh" and follow the command.
+
+> You can also add containers by running ./custom_start.sh with specified containers.
 
 > **NOTE:** The `-d` option causes the containers to run in the background.
 
